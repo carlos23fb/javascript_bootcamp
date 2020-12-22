@@ -15,7 +15,7 @@
 // console.log(isJavascriptFun);
 // console.log(typeof(isJavascriptFun));
 
- 
+
 
 // * Operators
 // const YEAR = 2037; 
@@ -105,30 +105,73 @@
 
 
 
-function bmi(mass, height) {
-    result = mass / (height ** 2);
-    return result;
+// function bmi(mass, height) {
+//     result = mass / (height ** 2);
+//     return result;
+// }
+
+
+
+// let markMass = 95;
+// let markHeight = 1.88;
+// let jonhMass = 85;
+// let jonhHeight = 1.76;
+
+// let markBmi = bmi(markMass, markHeight);
+
+
+// let jonhBmi = bmi(jonhMass, jonhHeight);
+
+
+// let markHigherBmi = markBmi > jonhBmi;
+
+// if(markHigherBmi){
+//     console.log(`Mark's BMI (${markBmi.toFixed(1)}) is higher 
+// than Jhon's (${jonhBmi.toFixed(1)})!`);
+// }else{
+//     console.log(`John's BMI (${jonhBmi.toFixed(1)}) is higher 
+// than Mark's (${markBmi.toFixed(1)})!`);
+// }
+
+// let message;
+
+// if(message === undefined){
+//     console.log(true);
+// }else{
+//     console.log(false);
+// }
+
+const averageScore = (team, score1, score2, score3) => {
+    let name = team;
+    let minScore;
+    let average = (score1 + score2 + score3) / 3;
+    if (score1 >= 100 || score2 >= 100 || score3 >= 100) {
+        minScore = true;
+    } else {
+        minScore = false;
+    }
+    return { name, average, minScore };
+
 }
 
+let dolphinsAverageScore = averageScore('Dolphins', 99, 99, 99);
+let koalasAverageScore = averageScore('Koalas', 99, 99, 99)
 
+console.log(dolphinsAverageScore);
+console.log(koalasAverageScore);
 
-let markMass = 95;
-let markHeight = 1.88;
-let jonhMass = 85;
-let jonhHeight = 1.76;
+const winner = (team1, team2) => {
+    if((team1.average> team2.average) && (team1.minScore)){
+        console.log(`${team1.name} is the winner`);
+    } else if ((team2.average > team1.average) && (team2.minScore))
+    {
+        console.log(`${team2.name} is the winner`);
+    } else if ((team1.average === team2.average) && (team1.minScore && team2.minScore))
+    {
+        console.log('Drawn');
+    }else{
+        console.log('No winners')
+    }
+} 
 
-let markBmi = bmi(markMass, markHeight);
-
-
-let jonhBmi = bmi(jonhMass, jonhHeight);
-
-
-let markHigherBmi = markBmi > jonhBmi;
-
-if(markHigherBmi){
-    console.log(`Mark's BMI (${markBmi.toFixed(1)}) is higher 
-than Jhon's (${jonhBmi.toFixed(1)})!`);
-}else{
-    console.log(`John's BMI (${jonhBmi.toFixed(1)}) is higher 
-than Mark's (${markBmi.toFixed(1)})!`);
-}
+winner(dolphinsAverageScore, koalasAverageScore)
