@@ -141,37 +141,60 @@
 //     console.log(false);
 // }
 
-const averageScore = (team, score1, score2, score3) => {
-    let name = team;
-    let minScore;
-    let average = (score1 + score2 + score3) / 3;
-    if (score1 >= 100 || score2 >= 100 || score3 >= 100) {
-        minScore = true;
-    } else {
-        minScore = false;
-    }
-    return { name, average, minScore };
+// const averageScore = (team, score1, score2, score3) => {
+//     let name = team;
+//     let minScore;
+//     let average = (score1 + score2 + score3) / 3;
+//     if (score1 >= 100 || score2 >= 100 || score3 >= 100) {
+//         minScore = true;
+//     } else {
+//         minScore = false;
+//     }
+//     return { name, average, minScore };
 
-}
+// }
 
-let dolphinsAverageScore = averageScore('Dolphins', 99, 99, 99);
-let koalasAverageScore = averageScore('Koalas', 99, 99, 99)
+// const winner = (team1, team2) => {
+//     if((team1.average> team2.average) && (team1.minScore)){
+//         console.log(`${team1.name} is the winner`);
+//     } else if ((team2.average > team1.average) && (team2.minScore))
+//     {
+//         console.log(`${team2.name} is the winner`);
+//     } else if ((team1.average === team2.average) && (team1.minScore && team2.minScore))
+//     {
+//         console.log('Drawn');
+//     }else{
+//         console.log('No winners')
+//     }
+// } 
 
-console.log(dolphinsAverageScore);
-console.log(koalasAverageScore);
+// let dolphinsAverageScore = averageScore('Dolphins', 99, 99, 100);
+// let koalasAverageScore = averageScore('Koalas', 99, 99, 100);
+// console.log(dolphinsAverageScore);
+// console.log(koalasAverageScore);
+// winner(dolphinsAverageScore, koalasAverageScore)
 
-const winner = (team1, team2) => {
-    if((team1.average> team2.average) && (team1.minScore)){
-        console.log(`${team1.name} is the winner`);
-    } else if ((team2.average > team1.average) && (team2.minScore))
-    {
-        console.log(`${team2.name} is the winner`);
-    } else if ((team1.average === team2.average) && (team1.minScore && team2.minScore))
-    {
-        console.log('Drawn');
-    }else{
-        console.log('No winners')
-    }
-} 
+// const day = 'monday';
 
-winner(dolphinsAverageScore, koalasAverageScore)
+// switch (day) {
+//     case 'monday':
+//         console.log('Plan course structure');
+//         console.log('Go to coding meetup');
+//         break;
+//     case 'tuesday':
+//         console.log('Go to gym');
+//         break;
+//     default:
+//         console.log('no Task'); 
+// }
+
+
+// let age = 18;
+// age >= 18 ? console.log('I like to drink wine \u{1F377}') : console.log('I like to drink water');
+// console.log(`I like to drink ${age >= 18 ? "wine \u{1F377}" : "water"}`);
+
+let tip;
+let bill = 275;
+
+tip = bill >= 50 && bill <= 300 ? (bill * .15) + bill : bill > 300 ? (bill * .2) + bill : bill;
+console.log(`The bill was ${bill}, the tip was ${((bill >= 50 && bill <= 300 ? (bill * .15) + bill : bill > 300 ? (bill * .2) + bill : bill) - bill).toFixed(1)}, and the total value ${tip}`);
