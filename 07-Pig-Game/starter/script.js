@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnHold = document.querySelector('.btn--hold');
     const current0El = document.querySelector('#current--0');
     const current1El = document.querySelector('#current--1');
+    const player0El = document.querySelector('.player--0');
+    const player1El = document.querySelector('.player--1');
 
     diceEl.classList.add('hidden');
     score0EL.textContent = 0;
@@ -22,11 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    const switchPlayer = function(){
+        document.querySelector(`#current--${activePlayer}`).textContent = 0;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        currentScore = 0;
+        player0El.classList.toggle('player--active');
+        player1El.classList.toggle('player--active');
+    }
+
+
     // Rolling dice functionality
     const roll = function () {
         // Generating the random dice roll
         let dice = Math.trunc((Math.random() * 6) + 1);
-        console.log(dice);
 
         // Display dice
         diceEl.classList.remove('hidden');
@@ -37,27 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
             currentScore = currentScore + dice;
             document.querySelector(`#current--${activePlayer}`).textContent = currentScore;
         }else{
-        //Switch to next player 
-            if(activePlayer === 0){
-                document.querySelector(`#current--${activePlayer}`).textContent = 0;
-                document.querySelector(`.player.player--${activePlayer}`).classList.remove('player--active');
-                activePlayer = 1;
-                currentScore = 0;
-                document.querySelector(`.player.player--${activePlayer}`).classList.add('player--active');
-                
-                
-            }else if(activePlayer === 1){
-                document.querySelector(`#current--${activePlayer}`).textContent = 0;
-                document.querySelector(`.player.player--${activePlayer}`).classList.remove('player--active');
-                activePlayer = 0;
-                currentScore = 0;
-                document.querySelector(`.player.player--${activePlayer}`).classList.add('player--active');
-            }
-        }
+            switchPlayer();
+        };
     };
-
-
-
 
 
     btnRoll.onclick = roll;
