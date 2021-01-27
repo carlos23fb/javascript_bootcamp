@@ -24,20 +24,26 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-  orderDelivery : function({time = '20:00', address, starterIndex = 1, mainIndex = 0}){
+  orderDelivery: function ({ time = '20:00', address, starterIndex = 1, mainIndex = 0 }) {
     console.log(`Order recived ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+  orderPasta: function(ing1, ing2, ing3){
+    console.log(`Pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient, otherIngredients);
   }
 };
 
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2
-});
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sole, 21',
+//   mainIndex: 2,
+//   starterIndex: 2
+// });
 
-restaurant.orderDelivery({address: 'Boulevard del Parque, 77', starterIndex: 1})
+// restaurant.orderDelivery({address: 'Boulevard del Parque, 77', starterIndex: 1})
 
 
 // const arr = [2, 3, 4];
@@ -81,8 +87,52 @@ const { name: restaurantName,
   = restaurant;
 // console.log(restaurantName, hours, tags);
 
-const {menu: theMenu = [], starterMenu: starters = []} = restaurant;
+const { menu: theMenu = [], starterMenu: starters = [] } = restaurant;
 // console.log(theMenu, starters);
 
-const {fri : {open, close}} = hours;
+const { fri: { open, close } } = hours;
 // console.log(open, close);
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci'];
+
+// console.log(...newMenu);
+
+const mainMenuCopy = [...restaurant.mainMenu];
+
+const allMenu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+
+
+const myName = 'Juan';
+
+const letters = [...myName, "'", 'S'];
+// console.log(...letters);
+
+
+// const ingredients = [prompt('ingredients1'), prompt('ingredients2'), prompt('ingredients3'),];
+
+// restaurant.orderPasta(...ingredients);
+
+
+const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(pizza, risotto, otherFood);
+
+const {sat, ...weekdays} = restaurant.openingHours;
+// console.log(weekdays);
+
+const add = function(...numbers){
+  let cumulative = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    cumulative += numbers[i];
+  }
+  console.log(cumulative);
+};
+
+
+const numbers = [3,3,3]
+
+
+add(...numbers);
+
+let pizzaOrder = ['peperoni', 'aceitunas negras', 'chorizo', 'barbacoa'];
+
+restaurant.orderPizza(...pizzaOrder);
