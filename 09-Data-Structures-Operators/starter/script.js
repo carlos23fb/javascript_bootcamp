@@ -27,10 +27,10 @@ const restaurant = {
   orderDelivery: function ({ time = '20:00', address, starterIndex = 1, mainIndex = 0 }) {
     console.log(`Order recived ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
-  orderPasta: function(ing1, ing2, ing3){
+  orderPasta: function (ing1, ing2, ing3) {
     console.log(`Pasta with ${ing1}, ${ing2}, ${ing3}`);
   },
-  orderPizza: function(mainIngredient, ...otherIngredients){
+  orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient, otherIngredients);
   }
 };
@@ -116,23 +116,34 @@ const letters = [...myName, "'", 'S'];
 const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // console.log(pizza, risotto, otherFood);
 
-const {sat, ...weekdays} = restaurant.openingHours;
+const { sat, ...weekdays } = restaurant.openingHours;
 // console.log(weekdays);
 
-const add = function(...numbers){
-  let cumulative = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    cumulative += numbers[i];
-  }
-  console.log(cumulative);
-};
+// const add = function(...numbers){
+//   let cumulative = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     cumulative += numbers[i];
+//   }
+//   console.log(cumulative);
+// };
 
 
-const numbers = [3,3,3]
+// const numbers = [3,3,3]
 
 
-add(...numbers);
+// add(...numbers);
 
 let pizzaOrder = ['peperoni', 'aceitunas negras', 'chorizo', 'barbacoa'];
 
-restaurant.orderPizza(...pizzaOrder);
+// restaurant.orderPizza(...pizzaOrder);
+
+// restaurant.orderPizza && restaurant.orderPizza(...pizzaOrder);
+
+
+// const guest = restaurant.guest || 10;
+// console.log(guest);
+
+
+// console.log('' || null);
+// console.log('Juan' || null);
+// console.log(null || undefined);
