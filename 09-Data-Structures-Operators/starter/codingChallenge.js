@@ -90,9 +90,27 @@ const {odds : {team1 : team1, x: draw, team2: team2 }} = game;
 
 // game.printGoals('Pele', 'Maradona', 'Hugo Sanchez');
 // game.printGoals(...game.scored);
-console.log(team1);
-console.log(team2);
+// console.log(team1);
+// console.log(team2);
 let winner = team1<team2 && 'team 1 win' ||  team2<team1 && 'team 2 win'; 
-console.log(winner);
+// console.log(winner);
 
-console.log(players1);
+// console.log(players1);
+
+// for (const player of allPlayers) {
+//     console.log(player)
+// }
+
+// for(let player of allPlayers.entries()){
+//     if (player[1] === 'Martinez'){ 
+//         console.log(`${player[1]} at position ${player[0]}`);
+//         break;
+//     };
+// }
+
+
+
+for(let [i, el] of allPlayers.entries()){
+    console.log(`${i+1} - ${el}`);
+}
+
