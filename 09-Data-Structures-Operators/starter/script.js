@@ -1,22 +1,22 @@
 'use strict';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+
 const openingHours = {
-  thu: {
+  [weekdays[3]]: {
     open: 12,
-    close: 22,
-  },
-  fri: {
+      close: 22,
+    },
+  [weekdays[4]]: {
     open: 11,
-    close: 23,
-  },
-  sat: {
+      close: 23,
+    },
+  [weekdays[5]]: {
     open: 0, // Open 24 hours
-    close: 24,
-  },
-};
-
-
-
+      close: 24,
+    }
+}
 
 
 const restaurant = {
@@ -39,13 +39,9 @@ const restaurant = {
   orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient, otherIngredients);
   },
-  openingHours
+  openingHours,
+ 
 };
-
-
-
-
-
 
 
 
@@ -148,7 +144,7 @@ const letters = [...myName, "'", 'S'];
 const [pizza, , risotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // console.log(pizza, risotto, otherFood);
 
-const { sat, ...weekdays } = restaurant.openingHours;
+// const { sat, ...weekDays } = restaurant.openingHours;
 // console.log(weekdays);
 
 // const add = function(...numbers){
@@ -182,3 +178,55 @@ let pizzaOrder = ['peperoni', 'aceitunas negras', 'chorizo', 'barbacoa'];
 // const {openingHours} = restaurant;
 
 // console.table(openingHours);
+
+
+
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const days = 'mon tue wed thu fri sat sun'.split(' ');
+
+
+// days.foreach(day => {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we are open at ${open}`);
+// })
+
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, we are open at ${open}`);
+// }
+
+
+// console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
+// console.log(restaurant.orderRissoto?.(0, 1) ?? 'Mehtod does not exist');
+
+
+const users = [
+  {
+    name: 'Juan',
+    email: 'juan@curso.com',
+  }
+]
+
+// console.log(users[0]?.name ?? 'User array empty');
+
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+
+console.log(`We are open on ${properties.length}`);
+
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+console.table(entries)
+
+for(const x of entries){
+  console.log(x);
+}
+
+
+for(const [key, {open, close}] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
