@@ -43,9 +43,9 @@ const restaurant = {
  
 };
 
+const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
 
-
-
+console.log(orderSet);
 
 
 
@@ -211,24 +211,24 @@ const users = [
 
 
 const properties = Object.keys(openingHours);
-console.log(properties);
+// console.log(properties);
 
 
-console.log(`We are open on ${properties.length}`);
+// console.log(`We are open on ${properties.length}`);
 
 
 const entries = Object.entries(openingHours);
-console.log(entries);
+// console.log(entries);
 
-console.table(entries)
+// console.table(entries)
 
-for(const x of entries){
-  console.log(x);
-}
+// for(const x of entries){
+//   console.log(x);
+// }
 
 
-for(const [key, {open, close}] of entries) {
-  console.log(`On ${key} we open at ${open} and close at ${close}`);
-}
+// for(const [key, {open, close}] of entries) {
+//   console.log(`On ${key} we open at ${open} and close at ${close}`);
+// }
 
 
