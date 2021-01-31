@@ -92,7 +92,3 @@ const [team1, team2] = game.players;
 const [...allPlayers] = [...team1, ...team2]
 
 
-
-for(const player of allPlayers){
-	const score = 
-}

@@ -45,13 +45,31 @@ const restaurant = {
 
 const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
 
-console.log(orderSet);
+// console.log(orderSet);
+
+// console.log(orderSet.has('Pizza'));
+// console.log(orderSet.has('Garlic Bread'));
+orderSet.add('Garlic Bread');
+// console.log(orderSet);
+// orderSet.delete('Risotto');
+// console.log(orderSet);
+
+// orderSet.clear();
+// console.log(orderSet);
 
 
+// for(const order of orderSet){
+//   console.log(order);
+// }
 
 
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
 
 
+const stafUnique = [...new Set(staff)];
+// console.log(stafUnique);
+
+// console.log(new Set(staff).size);
 
 
 
@@ -232,3 +250,21 @@ const entries = Object.entries(openingHours);
 // }
 
 
+var lol = 0;
+const lel = 1 ;
+
+
+const myNumbers = [1,2,3,4,5,6,7,8];
+
+const xnumbers = myNumbers.map(x => x * 2);
+
+console.log(xnumbers);
+
+
+const filterNumbers = myNumbers.filter(x => x%2 == 0).reduce((a, b) => a+b)
+console.log(filterNumbers);
+
+
+
+const fNumbers = myNumbers.reduce((a, b)  => a+b);
+console.log(fNumbers);
