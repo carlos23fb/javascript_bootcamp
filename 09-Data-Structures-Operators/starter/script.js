@@ -268,3 +268,9 @@ console.log(filterNumbers);
 
 const fNumbers = myNumbers.reduce((a, b)  => a+b);
 console.log(fNumbers);
+
+const rest = new Map();
+
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest);
