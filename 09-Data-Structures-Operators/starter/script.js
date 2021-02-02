@@ -1,21 +1,22 @@
 'use strict';
 
+
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 
 const openingHours = {
   [weekdays[3]]: {
     open: 12,
-      close: 22,
-    },
+    close: 22,
+  },
   [weekdays[4]]: {
     open: 11,
-      close: 23,
-    },
+    close: 23,
+  },
   [weekdays[5]]: {
     open: 0, // Open 24 hours
-      close: 24,
-    }
+    close: 24,
+  }
 }
 
 
@@ -26,7 +27,7 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
- 
+
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
@@ -40,7 +41,7 @@ const restaurant = {
     console.log(mainIngredient, otherIngredients);
   },
   openingHours,
- 
+
 };
 
 const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
@@ -251,26 +252,58 @@ const entries = Object.entries(openingHours);
 
 
 var lol = 0;
-const lel = 1 ;
+const lel = 1;
 
 
-const myNumbers = [1,2,3,4,5,6,7,8];
+const myNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const xnumbers = myNumbers.map(x => x * 2);
 
-console.log(xnumbers);
+// console.log(xnumbers);
 
 
-const filterNumbers = myNumbers.filter(x => x%2 == 0).reduce((a, b) => a+b)
-console.log(filterNumbers);
+const filterNumbers = myNumbers.filter(x => x % 2 == 0).reduce((a, b) => a + b)
+// console.log(filterNumbers);
 
 
 
-const fNumbers = myNumbers.reduce((a, b)  => a+b);
-console.log(fNumbers);
+const fNumbers = myNumbers.reduce((a, b) => a + b);
+// console.log(fNumbers);
 
 const rest = new Map();
 
 rest.set('name', 'Classico Italiano');
 rest.set(1, 'Firenze, Italy');
-console.log(rest);
+// console.log(rest);
+
+
+const question = new Map([
+  ['question', 'What is the best programming language in the world'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavasCript'],
+  ['correct', 3],
+  [true, 'Correct'],
+  [false, 'Try again'],
+]);
+
+
+const hoursMap = new Map(Object.entries(openingHours));
+
+for (const [key, item] of question) {
+  if (typeof (key) === 'number') console.log(`Option ${key}: ${item}`);
+}
+
+// const answer = Number(prompt('Your answer?'));
+// console.log(answer);
+
+// if(answer === question.get('correct')){
+//   console.log(question.get(true));
+// }else{
+//   console.log(question.get(false));
+// }
+
+// console.log(question.get(question.get('correct') === answer));
+
+const questionArr = [...question];
+console.log(questionArr);
