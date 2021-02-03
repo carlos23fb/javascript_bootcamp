@@ -44,6 +44,31 @@ const restaurant = {
 
 };
 
+
+// const myFirstName = 'Carlos';
+// const arrName = [...myFirstName]
+// console.log(arrName);
+
+
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+
+// for(const [letter] of [...myFirstName]){
+// 	console.log(letter);
+// }
+
+console.log(airline[0]);
+console.log('BAR'[0]);
+console.log('BAR'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.lastIndexOf('PORTUGAL'.toLowerCase()));
+
+
+
+
 const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
 
 // console.log(orderSet);
@@ -290,9 +315,9 @@ const question = new Map([
 
 const hoursMap = new Map(Object.entries(openingHours));
 
-for (const [key, item] of question) {
-  if (typeof (key) === 'number') console.log(`Option ${key}: ${item}`);
-}
+// for (const [key, item] of question) {
+//   if (typeof (key) === 'number') console.log(`Option ${key}: ${item}`);
+// }
 
 // const answer = Number(prompt('Your answer?'));
 // console.log(answer);
@@ -305,5 +330,7 @@ for (const [key, item] of question) {
 
 // console.log(question.get(question.get('correct') === answer));
 
-const questionArr = [...question];
-console.log(questionArr);
+// const questionArr = [...question];
+// console.log(questionArr);
+
+
