@@ -44,38 +44,95 @@ const restaurant = {
 
 };
 
+const airline = 'TAP Air Portugal';
+const plane = 'A320';
+
+
+console.log(airline.toUpperCase());
+console.log(airline.toLowerCase());
+
+// if(airline[0] === 'T'){
+//   console.log(airline.slice(0,));
+//   console.log('True');
+// }else{
+//   console.log('False');
+// }
+
+let passanger = 'jOnAS';
+const passangerLower = passanger.toLowerCase()
+passanger = passanger.slice(0,1).toUpperCase() + passangerLower.slice(1);
+// console.log(passanger);
+
+
+
+function correctNames(fullName){
+	const arrName = fullName.split(' ');
+	const newArrName = [];
+	for(const name of arrName){
+		const newName = name.toUpperCase().slice(0,1) + name.toLowerCase().slice(1);
+		newArrName.push(newName);
+	}
+	return newArrName.join(' ');
+}
+
+// console.log(correctNames('JUAn CaRlOS FLores BeCeRRA'));
+
+const email = '   Juan@Carlos \n'
+const normalizeEmail = email.toLowerCase().trim();
+
+
+
+
+
+
+
 
 // const myFirstName = 'Carlos';
 // const arrName = [...myFirstName]
 // console.log(arrName);
 
 
-const airline = 'TAP Air Portugal';
-const plane = 'A320';
+
 
 
 // for(const [letter] of [...myFirstName]){
 // 	console.log(letter);
 // }
 
-console.log(airline[0]);
-console.log('BAR'[0]);
-console.log('BAR'.length);
+// console.log(airline[0]);
+// console.log('BAR'[0]);
+// console.log('BAR'.length);
 
-console.log(airline.indexOf('r'));
-console.log(airline.lastIndexOf('r'));
-console.log(airline.lastIndexOf('PORTUGAL'.toLowerCase()));
+// console.log(airline.indexOf('r'));
+// console.log(airline.lastIndexOf('r'));
+// console.log(airline.slice(4, 7));
+
+// console.log(airline.slice(0, airline.indexOf(' ')));
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+
+// const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
+
+
+// const checkMiddSeat = function(seat){
+//   const s = seat.slice(-1);
+//   if(s === 'B' || s === 'E'){
+//     console.log('Middle seat');
+//   }else{
+//     console.log('Lucky');
+//   }
+// }
+
+// checkMiddSeat('11A')
 
 
 
-
-const orderSet = new Set('Pasta Pizza Pizza Risotto Pasta Pizza'.split(' '));
 
 // console.log(orderSet);
 
 // console.log(orderSet.has('Pizza'));
 // console.log(orderSet.has('Garlic Bread'));
-orderSet.add('Garlic Bread');
+// orderSet.add('Garlic Bread');
 // console.log(orderSet);
 // orderSet.delete('Risotto');
 // console.log(orderSet);
