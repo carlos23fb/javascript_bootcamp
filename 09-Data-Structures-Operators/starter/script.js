@@ -45,11 +45,26 @@ const restaurant = {
 };
 
 const airline = 'TAP Air Portugal';
-const plane = 'A320';
+// const plane = 'A320';
 
 
-console.log(airline.toUpperCase());
-console.log(airline.toLowerCase());
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.toLowerCase().startsWith('airbus'));
+console.log(plane.toLowerCase().includes('boeing'));
+console.log(plane.toLowerCase().endsWith('neo'));
+
+
+if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+  console.log('New Airbus Family');
+}
+
+
+
+
+
+// console.log(airline.toUpperCase());
+// console.log(airline.toLowerCase());
 
 // if(airline[0] === 'T'){
 //   console.log(airline.slice(0,));
@@ -80,20 +95,15 @@ function correctNames(fullName){
 const email = '   Juan@Carlos \n'
 const normalizeEmail = email.toLowerCase().trim();
 
-
-
-
-
-
-
+// const priceGB = '288,97E';
+// const priceUS = priceGB.replace('E', '$').replace(',','.');
+// console.log(priceUS);
+const announcement = 'All passangers come to boarding door 23. Boarding door 23!';
+// console.log(announcement.replace('door', 'gate'));
 
 // const myFirstName = 'Carlos';
 // const arrName = [...myFirstName]
 // console.log(arrName);
-
-
-
-
 
 // for(const [letter] of [...myFirstName]){
 // 	console.log(letter);
@@ -153,16 +163,6 @@ const stafUnique = [...new Set(staff)];
 // console.log(stafUnique);
 
 // console.log(new Set(staff).size);
-
-
-
-
-
-
-
-
-
-
 
 
 // restaurant.orderDelivery({
@@ -389,5 +389,3 @@ const hoursMap = new Map(Object.entries(openingHours));
 
 // const questionArr = [...question];
 // console.log(questionArr);
-
-
