@@ -44,20 +44,36 @@ const restaurant = {
 
 };
 
+const checkBaggage = function (items){
+  const baggage = items.toLowerCase();
+  if(baggage.includes('gun') || baggage.includes('knife')){
+    console.log('You are not allowed on board');
+  }else{
+    console.log('Welcome aboard!');
+  }
+}
+
+
+
+checkBaggage('Gun knife');
+checkBaggage('C4 Koran benzin and a copy of the catcher in the rye');
+
+
+
 const airline = 'TAP Air Portugal';
 // const plane = 'A320';
 
 
 const plane = 'Airbus A320neo';
-console.log(plane.includes('A320'));
-console.log(plane.toLowerCase().startsWith('airbus'));
-console.log(plane.toLowerCase().includes('boeing'));
-console.log(plane.toLowerCase().endsWith('neo'));
+// console.log(plane.includes('A320'));
+// console.log(plane.toLowerCase().startsWith('airbus'));
+// console.log(plane.toLowerCase().includes('boeing'));
+// console.log(plane.toLowerCase().endsWith('neo'));
 
 
-if(plane.startsWith('Airbus') && plane.endsWith('neo')){
-  console.log('New Airbus Family');
-}
+// if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+//   console.log('New Airbus Family');
+// }
 
 
 
