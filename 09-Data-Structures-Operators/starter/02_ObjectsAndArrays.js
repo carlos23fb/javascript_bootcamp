@@ -2,7 +2,7 @@
 
 const JOURNAL = require('./journal');
 
-require('/home/clr23/Documents/javascript_bootcamp/09-Data-Structures-Operators/starter/journal.js');
+require('./journal.js');
 // TODO Objects
 let day1 = {
     squirrel: false,
