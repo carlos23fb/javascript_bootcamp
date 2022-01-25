@@ -34,9 +34,6 @@ const restaurant = {
 };
 
 
-restaurant.orderDelivery({
-  address: "Mariano Escobedo #112"
-})
 
 
 // * Destructuring Objects
@@ -61,15 +58,31 @@ const obj = { a: 23, b: 7, c: 14 };
 
 let { fri: { open: o, close: c } } = restaurant.openingHours
 
+// * Using object destructuring for multiple argument fuctions
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sole, 21',
-  mainIndex: 2,
-  starterIndex: 2
-})
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sole, 21',
+//   mainIndex: 2,
+//   starterIndex: 2
+// })
+
+// restaurant.orderDelivery({
+//   address: "Mariano Escobedo #112"
+// })
 
 
+// * Spread Operator
+
+const arr = [4, 5, 6];
+
+const new_arr = [1, 2, 3, ...arr]
+
+
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']
+
+console.log(newMenu);
 
 
 
