@@ -46,10 +46,10 @@ const { menu = [], starterMenu: stater = [] } = restaurant;
 
 
 // * Mutating variables
-let a = 111;
-let b = 999;
-const obj = { a: 23, b: 7, c: 14 };
-({ a, b } = obj);
+// let a = 111;
+// let b = 999;
+// const obj = { a: 23, b: 7, c: 14 };
+// ({ a, b } = obj);
 
 // * Nested Objects
 
@@ -133,9 +133,9 @@ const newRest = {...restaurant}
 
 newRest.name = 'Classico Romanian';
 
-console.log(newRest.name);
+// console.log(newRest.name);
 
-console.log(restaurant.name);
+// console.log(restaurant.name);
 
 newRest.openingHours.thus = {
   open: 14,
@@ -143,6 +143,15 @@ newRest.openingHours.thus = {
 }
 
 
-console.log(newRest.openingHours.thus);
+// console.log(newRest.openingHours.thus);
 
-console.log(restaurant.openingHours.thus);
+// console.log(restaurant.openingHours.thus);
+
+// TODO Rest Pattern
+
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+
+
+console.log(others);
+
+const = [...restaurant.starterMenu, ...restaurant.mainMenu]
