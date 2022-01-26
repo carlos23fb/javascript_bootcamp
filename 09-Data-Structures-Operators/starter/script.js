@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -30,10 +27,12 @@ const restaurant = {
   },
   orderDelivery: function ({starterIndex = 1, mainIndex = 0, time = '20:00', address}) {
     console.log(`Address: ${address}, time: ${time}, main: ${this.mainMenu[mainIndex]} starter: ${this.starterMenu[starterIndex]}`);
+  },
+
+  orederPasta: function(ing1, ing2, ing3){
+    console.log(`Here is the pasta with ${ing1}, ${ing2}, ${ing3}`);
   }
 };
-
-
 
 
 // * Destructuring Objects
@@ -79,11 +78,7 @@ const arr = [4, 5, 6];
 const new_arr = [1, 2, 3, ...arr]
 
 
-
 const newMenu = [...restaurant.mainMenu, 'Gnocci']
-
-console.log(newMenu);
-
 
 
 // TODO Destructuring Arrays
@@ -100,3 +95,54 @@ console.log(newMenu);
 
 // console.log(restaurant.openingHours);
 
+// * Copy array
+
+const mainMenuCopy = [...restaurant.mainMenu]
+
+
+
+const the_menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// console.log(the_menu);
+
+
+// Iterables: arrays, strings, maps , sets, NOT Objects
+
+
+const my_name = 'Jonas';
+
+
+const letters = [...my_name, ' ', 's.'];
+
+// console.log(letters);
+
+// console.log(letters.join(""));
+
+
+// * Real World Example
+
+const ingridients = [];
+
+// for(let i = 1; i <= 3; i++){
+//   let ingridient =  prompt("Select Ingridient");
+//   ingridients.push(ingridient);
+// }
+
+// restaurant.orederPasta(...ingridients)
+
+const newRest = {...restaurant}
+
+newRest.name = 'Classico Romanian';
+
+console.log(newRest.name);
+
+console.log(restaurant.name);
+
+newRest.openingHours.thus = {
+  open: 14,
+  close: 16,
+}
+
+
+console.log(newRest.openingHours.thus);
+
+console.log(restaurant.openingHours.thus);
