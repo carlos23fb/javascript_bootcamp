@@ -71,7 +71,7 @@ let { fri: { open: o, close: c } } = restaurant.openingHours
 // })
 
 
-// * Spread Operator
+// * 01 Destructuring
 
 const arr = [4, 5, 6];
 
@@ -142,16 +142,45 @@ newRest.openingHours.thus = {
   close: 16,
 }
 
-
 // console.log(newRest.openingHours.thus);
 
 // console.log(restaurant.openingHours.thus);
 
-// TODO Rest Pattern
+//
+
+
+//   FIXME:  Rest Pattern, because on LEFT side of =
 
 const [a, b, ...others] = [1, 2, 3, 4, 5];
 
 
-console.log(others);
+// console.log(others);
 
-const = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+// ! The REST element must be the last
+
+const [pizza, , risoto, ...otherfood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+
+// console.log(pizza, risoto, otherfood);
+
+
+// * REST pattern with Objects
+
+
+const {sat, ...weekdays} = restaurant.openingHours
+
+// console.log(sat, weekdays);
+
+// TODO: Functions
+
+// ? Rest Parameters
+
+
+const add = function(...numbers){
+  const result = numbers.reduce((p, a) => p+a)
+  console.log(result);
+}
+
+
+add(2, 3)
+add(5, 3, 5)
