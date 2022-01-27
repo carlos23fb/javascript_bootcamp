@@ -31,6 +31,12 @@ const restaurant = {
 
   orederPasta: function(ing1, ing2, ing3){
     console.log(`Here is the pasta with ${ing1}, ${ing2}, ${ing3}`);
+  },
+
+  // ? Multiple parameter function
+  orderPizza: function(mainIngridient, ...otherIngridients){
+    console.log(mainIngridient);
+    console.log(otherIngridients);
   }
 };
 
@@ -175,6 +181,7 @@ const {sat, ...weekdays} = restaurant.openingHours
 
 // ? Rest Parameters
 
+// FIXME: Write this function but in a recursive way.
 
 const add = function(...numbers){
   const result = numbers.reduce((p, a) => p+a)
@@ -182,5 +189,22 @@ const add = function(...numbers){
 }
 
 
-add(2, 3)
-add(5, 3, 5)
+// add(2, 3)
+// add(5, 3, 5)
+
+const x = [ 2, 3, 4, 2]
+
+// console.log(Array.isArray(x));
+
+// const recursive_add = function(...numbers){
+//   if(Array.isArray(numbers) === true){
+//     console.log("Array");
+//     recursive_add(...numbers)
+//   }else{
+//     console.log("Not Array");
+//     console.log(numbers);
+//   }
+// }
+
+
+restaurant.orderPizza('Pepperoni', 'Fetta Chesse', 'Pineapple')
