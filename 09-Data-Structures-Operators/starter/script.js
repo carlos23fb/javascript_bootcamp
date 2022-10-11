@@ -11,6 +11,9 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  order: function(starterIndex, mainIndex){
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  },
 
   openingHours: {
     thu: {
@@ -27,3 +30,42 @@ const restaurant = {
     },
   },
 };
+
+const arr = [2, 3, 4]
+
+const [a, b, c] = arr
+
+// console.log(a)
+
+//* Switching variables
+
+let [main, ,secondary] = restaurant.categories;
+
+// console.log(main, secondary);
+
+[main, secondary] = [secondary, main]
+
+// console.log(main, secondary)
+
+
+//* Receive 2 Values from a function 
+
+const [starter, mainCourse] = restaurant.order(2, 0)
+
+// console.log(starter, mainCourse)
+
+const nested = [2, 3, [4, 5, 6]]
+
+// const [i , , g] = nested
+
+// console.log(i,g)
+
+const [i, ,[j, k]] = nested
+console.log(i,j,k)
+
+
+//* Default Values
+
+const[p=1,q=1, r=1] = [8, 9]
+
+console.log(p, q, r)
