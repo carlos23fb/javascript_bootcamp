@@ -44,12 +44,46 @@ const restaurant = {
   },
 };
 
+// TODO Short Circuiting (&& and ||)
+
+// FIXME: Short Circuiting with functions example
+
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushrooms', 'spinach', 'onions')
+
+}
+
+restaurant.orderPizza && restaurant.orderPizza('Pepperoni', 'Sauce')
+
+
+// ? Logic operators can USE and RETURN any data type, short-circuiting
+
+// FIXME: OR 
+
+// console.log(false || null)
+
+// const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+
+// console.log(guests1)
+
+const guests2 = restaurant.numGuests || 10;
+
+// console.log(guests2)
+
+
+// FIXME: AND
+
+// console.log(0 && 'Jonas')
+// console.log(7 && 'Jonas')
+// console.log(7 && 'Jonas' && null && 1)
+
+
 // TODO Rest pattern
 
 // FIXME: Using rest pattern in the restaurant object 
 
 
-restaurant.orderPizza('Pinaple', 'Jam', 'Cheese')
+// restaurant.orderPizza('Pinaple', 'Jam', 'Cheese')
 
 // FIXME: 1) Destructuring 
 
