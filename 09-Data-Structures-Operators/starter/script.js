@@ -38,20 +38,70 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`)
   },
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient)
+    console.log(otherIngredients)
+  },
 };
 
-// * Spread Operator
+// TODO Rest pattern
+
+// FIXME: Using rest pattern in the restaurant object 
+
+
+restaurant.orderPizza('Pinaple', 'Jam', 'Cheese')
+
+// FIXME: 1) Destructuring 
+
+// ? Spread, because on the RiGHT side of =
+const arr = [1, 2, ...[3, 4]];
+
+
+// ? Rest, because on the LEFT side of =
+
+const [a, b, ...others] = [1, 2, 3, 4, 5]
+
+// console.log(a, b, others)
+
+const [pizza, , rissotto, ...otherFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+
+
+// console.log(pizza, rissotto, otherFood)
+
+// * Rest pattern with objects
+
+
+const { fri, ...weekDays } = restaurant.openingHours
+
+// console.log(fri, weekDays)
+
+// FIXME: 2) functions
+
+const add = function (...numbers) {
+  let cumulative_sum = numbers.reduce((a, b) => a + b)
+  console.log(cumulative_sum)
+}
+
+// add(2, 3)
+// add(5, 3, 7, 2)
+// const x = [1, 2, 4]
+
+// add(...x)
+
+
+
+// TODO * Spread Operator
 
 // * Real world example with objects
 
-const newRestaurantObj = {restaurant}
+// const newRestaurantObj = {restaurant}
 
-newRestaurantObj.name = "Classico Italiano 2"
+// newRestaurantObj.name = "Classico Italiano 2"
 
 
-console.log(newRestaurantObj.name)
+// console.log(newRestaurantObj.name)
 
-console.log(restaurant.name)
+// console.log(restaurant.name)
 
 
 
@@ -60,9 +110,9 @@ console.log(restaurant.name)
 
 // restaurant.orderPasta(...ingridients)
 
-const arr = [7, 8, 9]
+// const arr = [7, 8, 9]
 
-const newARR = [5, 6, ...arr]
+// const newARR = [5, 6, ...arr]
 
 // console.log(newARR)
 
@@ -89,7 +139,7 @@ const arrName = [..."Juan"]
 
 
 
-// * Destructuring Objects
+// TODO Destructuring Objects
 
 // restaurant.orderDelivery({
 //   time: '22:30',
@@ -124,15 +174,15 @@ const { menu = ['no menu'], starterMenu: starters = [] } = restaurant
 
 // * Mutating variables
 
-let a = 111;
-let b = 999;
+// let a = 111;
+// let b = 999;
 
 // console.log(a,b)
 
-const obj = { a: 23, b: 7, c: 14 };
+// const obj = { a: 23, b: 7, c: 14 };
 
 
-({ a, b } = obj);
+// ({ a, b } = obj);
 
 // console.log(a, b);
 
@@ -144,7 +194,7 @@ const { fri: { open, close } } = restaurant.openingHours
 
 
 
-// * Destructuring Arrays
+// TODO Destructuring Arrays
 
 // const arr = [2, 3, 4]
 
