@@ -31,24 +31,77 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
   },
-  orderDelivery: function ({ starterIndex=1, mainIndex=0, time='20:00', address }) {
+  orderDelivery: function ({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`)
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`)
   },
 };
 
+// * Spread Operator
+
+// * Real world example with objects
+
+const newRestaurantObj = {restaurant}
+
+newRestaurantObj.name = "Classico Italiano 2"
+
+
+console.log(newRestaurantObj.name)
+
+console.log(restaurant.name)
+
+
+
+// * restaurant function with spread operator
+// const ingridients = [prompt('Let\'s make pasta! Ingridient 1?'), prompt('Ingridient 2?'), prompt('Ingridient 3?')]
+
+// restaurant.orderPasta(...ingridients)
+
+const arr = [7, 8, 9]
+
+const newARR = [5, 6, ...arr]
+
+// console.log(newARR)
+
+// console.log(...newARR)
+
+const newMenu = [...restaurant.mainMenu, 'Gnocci']
+
+// console.log(newMenu)
+
+// Copy Arrays
+const mainMenuCopy = [...restaurant.mainMenu]
+
+
+//* Join 2 arrays
+
+const allMenu = [...restaurant.mainMenu, ...restaurant.starterMenu]
+
+//* console.log(allMenu)
+let myName = 'Juan'
+const arrName = [..."Juan"]
+// console.log(arrName)
+
+
+
+
+
 // * Destructuring Objects
 
-restaurant.orderDelivery({
-  time: '22:30',
-  address: 'Via del Sol, 21',
-  mainIndex: 2,
-  starterIndex: 2,
-})
+// restaurant.orderDelivery({
+//   time: '22:30',
+//   address: 'Via del Sol, 21',
+//   mainIndex: 2,
+//   starterIndex: 2,
+// })
 
 
-restaurant.orderDelivery({
-  address: 'Via del Sol, 21'
-})
+// restaurant.orderDelivery({
+//   address: 'Via del Sol, 21'
+// })
 
 
 
