@@ -38,11 +38,29 @@ const restaurant = {
   orderPasta: function (ing1, ing2, ing3) {
     console.log(`Here is your delicious pasta with ${ing1}, ${ing2}, ${ing3}`)
   },
-  orderPizza: function(mainIngredient, ...otherIngredients){
+  orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient)
     console.log(otherIngredients)
   },
 };
+
+// TODO Looping Arrays
+
+let info_array = []
+
+for (const word of "Juan Carlos Flores Becerra".split(" ").entries()) {
+
+  info_array.push({ index: word[0], value: word[1], length: word[1].length })
+
+};
+
+
+const all_menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+
+for(const [i, element] of all_menu.entries() ){
+  console.log(`${i+1}. ${element}`)
+};
+
 
 
 // TODO Logical assignmet operators
@@ -76,8 +94,8 @@ rest2.numGuests ||= 30;
 rest1.owner &&= "<ANONYMOUS>"
 rest2.owner &&= "<ANONYMOUS>"
 
-console.log(rest1)
-console.log(rest2)
+// console.log(rest1)
+// console.log(rest2)
 
 
 // TODO Nullish Coalescing Operator
