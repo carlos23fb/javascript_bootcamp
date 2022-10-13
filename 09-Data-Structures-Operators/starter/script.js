@@ -44,16 +44,29 @@ const restaurant = {
   },
 };
 
+// TODO Nullish Coalescing Operator
+
+restaurant.numGuests = 0;
+
+const guests = restaurant.numGuests || 10;
+
+console.log(guests)
+
+// ? Nullish values are: null and undefined (not "" or 0 )
+const guestCorrect = restaurant.numGuests ?? 11;
+console.log(guestCorrect)
+
+
 // TODO Short Circuiting (&& and ||)
 
 // FIXME: Short Circuiting with functions example
 
-if(restaurant.orderPizza){
-  restaurant.orderPizza('mushrooms', 'spinach', 'onions')
+// if(restaurant.orderPizza){
+//   restaurant.orderPizza('mushrooms', 'spinach', 'onions')
 
-}
+// }
 
-restaurant.orderPizza && restaurant.orderPizza('Pepperoni', 'Sauce')
+// restaurant.orderPizza && restaurant.orderPizza('Pepperoni', 'Sauce')
 
 
 // ? Logic operators can USE and RETURN any data type, short-circuiting
@@ -66,7 +79,6 @@ restaurant.orderPizza && restaurant.orderPizza('Pepperoni', 'Sauce')
 
 // console.log(guests1)
 
-const guests2 = restaurant.numGuests || 10;
 
 // console.log(guests2)
 
