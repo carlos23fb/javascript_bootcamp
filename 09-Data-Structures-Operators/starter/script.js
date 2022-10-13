@@ -44,17 +44,53 @@ const restaurant = {
   },
 };
 
+
+// TODO Logical assignmet operators
+
+const rest1 = {
+  name: 'Capri',
+  // numGuests: 20,
+  numGuests: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests ||10;
+
+// * Or assignmet operator
+
+rest1.numGuests ??= 30;
+rest2.numGuests ||= 30;
+
+
+// console.log(rest1)
+// console.log(rest2)
+
+// rest2.owner = rest2.owner && '<ANONYMOUS>'
+
+rest1.owner &&= "<ANONYMOUS>"
+rest2.owner &&= "<ANONYMOUS>"
+
+console.log(rest1)
+console.log(rest2)
+
+
 // TODO Nullish Coalescing Operator
 
 restaurant.numGuests = 0;
 
 const guests = restaurant.numGuests || 10;
 
-console.log(guests)
+// console.log(guests)
 
 // ? Nullish values are: null and undefined (not "" or 0 )
 const guestCorrect = restaurant.numGuests ?? 11;
-console.log(guestCorrect)
+// console.log(guestCorrect)
 
 
 // TODO Short Circuiting (&& and ||)
