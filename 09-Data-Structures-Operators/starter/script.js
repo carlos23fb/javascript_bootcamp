@@ -7,16 +7,16 @@ const flights =
 const openingHours = {
   thu: {
     open: 12,
-      close: 22,
-    },
+    close: 22,
+  },
   fri: {
     open: 11,
-      close: 23,
-    },
+    close: 23,
+  },
   sat: {
     open: 0, // Open 24 hours
-      close: 24,
-    },
+    close: 24,
+  },
 };
 
 
@@ -30,7 +30,7 @@ const restaurant = {
   openingHours,
 
 
-  
+
 
   order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
@@ -48,9 +48,47 @@ const restaurant = {
   },
 };
 
+// TODO Optional Chaining
+
+// console.log(restaurant.openingHours.mon && restaurant.openingHours.mon.open || 'Closed in mondays')
+
+
+// FIXME: With optional Chaining
+
+// console.log(restaurant.openingHours?.mon?.open)
+
+
+// TODO Loop days array and check if is open that day
+
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
+
+
+// days.forEach(day=>{
+
+//   const opening_hour = restaurant.openingHours[day]?.open ?? 'Closed'
+
+//   console.log(opening_hour)
+
+// })
+
+// FIXME: Optional Chaining with methods
+
+// console.log(restaurant.order?.(0,1) ?? "Method doest exist")
+// console.log(restaurant.orderRisotto?.(0, 1) ?? "Method doest exist")
+
+// FIXME: Arrays with optional Chaining
+
+const users = [{name: 'Juan', email: 'carlos@email.com'}]
+
+console.log(users[0]?.name ?? 'User Doesnt exist')
+console.log(users[1]?.name ?? 'User Doesnt exist')
+
+
+
+
 // TODO Enhaced Object Literals
 
-console.log(restaurant.openingHours)
+// console.log(restaurant.openingHours)
 
 // TODO Looping Arrays
 
@@ -63,11 +101,11 @@ for (const word of "Juan Carlos Flores Becerra".split(" ").entries()) {
 };
 
 
-const all_menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+// const all_menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
 
-for(const [i, element] of all_menu.entries() ){
-  console.log(`${i+1}. ${element}`)
-};
+// for(const [i, element] of all_menu.entries() ){
+//   console.log(`${i+1}. ${element}`)
+// };
 
 
 
