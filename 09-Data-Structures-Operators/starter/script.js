@@ -48,6 +48,29 @@ const restaurant = {
   },
 };
 
+// TODO Looping Objects
+
+const props = Object.keys(openingHours)
+// console.log(props)
+let openStr = `We are open on ${props.length} days: `
+
+props.forEach(day => {
+  openStr += `${day}, `
+})
+
+// console.log(openStr)
+
+
+// console.log(Object.values(openingHours))
+
+
+// FIXME: Loop boot keys and values
+
+Object.entries(openingHours).forEach(([key, {open, close}]) => {
+  console.log(`Day ${key}, open: ${open}, closed: ${close}`)
+})
+
+
 // TODO Optional Chaining
 
 // console.log(restaurant.openingHours.mon && restaurant.openingHours.mon.open || 'Closed in mondays')
@@ -78,10 +101,10 @@ const restaurant = {
 
 // FIXME: Arrays with optional Chaining
 
-const users = [{name: 'Juan', email: 'carlos@email.com'}]
+const users = [{ name: 'Juan', email: 'carlos@email.com' }]
 
-console.log(users[0]?.name ?? 'User Doesnt exist')
-console.log(users[1]?.name ?? 'User Doesnt exist')
+// console.log(users[0]?.name ?? 'User Doesnt exist')
+// console.log(users[1]?.name ?? 'User Doesnt exist')
 
 
 
