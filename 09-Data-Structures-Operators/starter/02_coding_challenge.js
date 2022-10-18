@@ -71,10 +71,17 @@ console.log(avg_odds)*/
 //players who scored as properties, and the number of goals as the value. In this
 //game, it will look like this:
 
-const arr = game.scored;
-const playes = {};
 
-arr.count('Lewandowski')
+// 
 
 
+let scorers = {}
 
+const players = game.scored
+
+players.forEach(element=>{
+    scorers[element] ? scorers[element] ++ : (scorers[element] = 1)
+})
+
+
+console.log(scorers)

@@ -48,15 +48,68 @@ const restaurant = {
   },
 };
 
+// TODO Sets 
+
+// ? Sets stores only unique values
+
+const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto'])
+
+// console.log(orderSet)
+
+// * FIXME: * Size of set 
+
+// console.log(orderSet.size)
+
+// * FIXME: * Lookup for values
+
+// console.log(orderSet.has('Pizza'))
+// console.log(orderSet.has('Meat balls'))
+
+// * FIXME: * Adding new elements
+
+// orderSet.add('Garlic Bread')
+// orderSet.add('Garlic Bread')
+// console.log(orderSet.size)
+
+// * FIXME: * Delete elements 
+
+// orderSet.delete('Pasta')
+// console.log(orderSet)
+
+// ? There is no need for retriving data form a set
+
+// * FIXME: * Clear all values from a set
+
+// orderSet.clear();
+
+// console.log(orderSet)
+
+//  FIXME: Looping trought a set
+
+
+// orderSet.forEach(order=>{
+//   console.log(order)
+// })
+
+// TODO removing duplicated values from a array using Sets
+
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
+
+const uniqueStaff = [...new Set(staff)]
+
+console.log(uniqueStaff)
+
+console.log(new Set(staff).size)
+
 // TODO Looping Objects
 
-const props = Object.keys(openingHours)
+// const props = Object.keys(openingHours)
 // console.log(props)
-let openStr = `We are open on ${props.length} days: `
+// let openStr = `We are open on ${props.length} days: `
 
-props.forEach(day => {
-  openStr += `${day}, `
-})
+// props.forEach(day => {
+//   openStr += `${day}, `
+// })
 
 // console.log(openStr)
 
@@ -66,9 +119,9 @@ props.forEach(day => {
 
 // FIXME: Loop boot keys and values
 
-Object.entries(openingHours).forEach(([key, {open, close}]) => {
-  console.log(`Day ${key}, open: ${open}, closed: ${close}`)
-})
+// Object.entries(openingHours).forEach(([key, {open, close}]) => {
+//   console.log(`Day ${key}, open: ${open}, closed: ${close}`)
+// })
 
 
 // TODO Optional Chaining
@@ -147,7 +200,7 @@ const rest2 = {
 
 
 // rest1.numGuests = rest1.numGuests || 10;
-// rest2.numGuests = rest2.numGuests ||10;
+// rest2.numGuests = rest2.numGuests || 10;
 
 // * Or assignmet operator
 
