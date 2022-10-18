@@ -48,6 +48,60 @@ const restaurant = {
   },
 };
 
+// TODO Maps Fundamentals
+
+// ? Map is a data structure that we can use to MAP values to Keys
+// ? Keys can be of any type (strings, numbers, objects, sets, other maps)
+
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+
+rest.set(1, 'Firenze, Italy')
+
+rest.set(2, 'Lisbon Portugal')
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']).set('open', 11).set('close', 23).set(true, 'We are open :D').set(false, 'We are closed :C')
+
+
+// console.log(rest.get(true))
+// console.log(rest.get('name'))
+// console.log(rest.get(false))
+// console.log(rest.get(2))
+
+// TODO example 
+
+// const time = 23
+// const  isOpen = time > rest.get('open') && time < rest.get('close');
+// console.log(rest.get(isOpen))
+
+
+// FIXME: Checking certain key
+
+// console.log(rest.has('categories'))
+// console.log(rest.has('adress'))
+
+// FIXME: Deleting elements from Maps
+
+rest.delete(1)
+
+// console.log(rest)
+
+// FIXME: Clearing the Map
+
+// rest.clear()
+
+// console.log(rest)
+
+// FIXME: Get the size of the set
+
+// console.log(rest.size)
+
+
+rest.set([1, 2], 'Using arrays as keys')
+
+console.log(rest)
+
 // TODO Sets 
 
 // ? Sets stores only unique values
@@ -91,17 +145,17 @@ const orderSet = new Set(['Pasta', 'Pizza', 'Pizza', 'Risotto'])
 //   console.log(order)
 // })
 
-// TODO removing duplicated values from a array using Sets
+// FIXME: removing duplicated values from a array using Sets
 
 const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']
 
 const uniqueStaff = [...new Set(staff)]
 
-console.log(uniqueStaff)
+// console.log(uniqueStaff)
 
-console.log(new Set(staff).size)
+// console.log(new Set(staff).size)
 
-// TODO Looping Objects
+// FIXME:  Looping Objects
 
 // const props = Object.keys(openingHours)
 // console.log(props)
