@@ -48,6 +48,48 @@ const restaurant = {
   },
 };
 
+// TODO Maps Iteration
+
+const question = new Map([['question', 'What is the best programing language?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct!!'],
+  [false, 'Try again']]);
+
+// console.log(question)
+
+// FIXME: Converting objects to maps
+
+const hoursMap = new Map(Object.entries(openingHours))
+
+// console.log(hoursMap)
+
+// console.log(hoursMap.get('thu'))
+
+// ? Maps are iterable to
+
+// console.log(question.get('question'))
+
+// for(const [key, value] of question){
+//   if(typeof(key) === 'number'){
+//     console.log(`Answer ${key}: ${value}`)
+//   }
+// }
+
+// const answer = Number(prompt('enter answer'))
+
+
+
+// console.log(question.get(answer === question.get('correct')))
+
+// FIXME: Converting maps to arrays
+
+const questionArr = [...question]
+
+// console.log(questionArr)
+
 // TODO Maps Fundamentals
 
 // ? Map is a data structure that we can use to MAP values to Keys
@@ -100,7 +142,15 @@ rest.delete(1)
 
 rest.set([1, 2], 'Using arrays as keys')
 
-console.log(rest)
+// console.log(rest)
+
+// ? [1, 2] is not the same object in the heap so it returns undefined
+
+// console.log(rest.get([1, 2]))
+
+rest.set(document.querySelector('h1'), 'Heading')
+
+// console.log(rest)
 
 // TODO Sets 
 
