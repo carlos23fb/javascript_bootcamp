@@ -48,6 +48,46 @@ const restaurant = {
   },
 };
 
+// TODO Working with Strings PART 1
+
+const airline = 'TAP Air Portugal'
+const plane = 'A320'
+
+// console.log(plane[0])
+// console.log(plane[1])
+// console.log(plane[2])
+// console.log(plane[3])
+// console.log('B737'[0])
+
+// console.log(airline.length)
+// console.log('B737'.length)
+
+// console.log(airline.toLocaleLowerCase().indexOf('r'))
+// console.log(airline.toLocaleLowerCase().lastIndexOf('r'))
+// console.log(airline.toLocaleLowerCase().indexOf('PORTUGAL'.toLocaleLowerCase()))
+
+// console.log(airline.slice(4))
+// console.log(airline.slice(4, 7))
+
+// console.log(airline.slice(0, airline.indexOf(' ')))
+
+// console.log(airline.slice(airline.lastIndexOf(' ') + 1))
+
+
+const checkMiddleSeat = function(seat){
+const row = seat.slice(-1)
+if(row.toLocaleLowerCase() === 'c'){
+  console.log('In the middle')
+}else{
+  console.log('Not the middle')
+}
+}
+
+
+checkMiddleSeat(`11b`)
+
+
+
 // TODO Maps Iteration
 
 const question = new Map([['question', 'What is the best programing language?'],
