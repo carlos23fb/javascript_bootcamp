@@ -48,10 +48,93 @@ const restaurant = {
   },
 };
 
-// TODO Working with Strings PART 1
+// TODO Working with Stringa PART 2
 
 const airline = 'TAP Air Portugal'
-const plane = 'A320'
+
+
+// console.log(airline.toLowerCase())
+
+// console.log(airline.toLocaleLowerCase())
+
+// FIXME: Fix capitalization in name
+
+const passanger = 'jOnAS'
+
+// ? Jonas way
+
+// const lowerName = passanger.toLowerCase()
+// const passangerCorrect = lowerName[0].toUpperCase() + lowerName.slice(1)
+
+// console.log(passangerCorrect)
+
+// ? My way, using array destructuring
+
+// const first_letter = [...passanger][0].toUpperCase()
+// const fixName = first_letter + passanger.slice(1).toLowerCase()
+// console.log(fixName)
+
+// FIXME: Comparing emails
+
+const email = 'hello@jonas.io'
+const loginEmail = ' Hello@Jonas.Io \n';
+
+
+// console.log(email === loginEmail.toLowerCase().trim())
+
+
+// FIXME: Replacing
+
+
+const priceGB = '288,07E';
+const priceUS = priceGB.replace('E', '$').replace(',', '.')
+
+// console.log(priceUS)
+
+const annoncement = 'All passangers come to boarding door 23. Boarding door 23'
+
+// console.log(annoncement.replaceAll('door', 'gate'))
+
+// FIXME: Booleans
+
+const plane = 'Airbus A32neo'
+
+// console.log(plane.includes('A32'))
+
+// console.log(plane.includes('Boeing'))
+
+// console.log(plane.startsWith('Air'))
+
+
+
+// if(plane.startsWith('Airbus') && plane.endsWith('neo')){
+//   console.log('Part of the new airbus family')
+// }else{
+//   console.log('Senior airbus family')
+// }
+
+// FIXME: Practice excercise
+
+const checkBaggage = function(items){
+  const baggage = String(items).toLowerCase()
+  if(baggage.includes('gun') || baggage.includes('knife')){
+    console.log('You are not allowed aboard')
+  }else{
+    console.log('Welcome aboard!')
+  }
+}
+
+checkBaggage('I have a laptop, some Food and a pocket Knife')
+
+checkBaggage('Socks and camera')
+
+checkBaggage('Got some snacks and a gun for protection');
+
+
+
+// TODO Working with Strings PART 1
+
+
 
 // console.log(plane[0])
 // console.log(plane[1])
@@ -74,17 +157,17 @@ const plane = 'A320'
 // console.log(airline.slice(airline.lastIndexOf(' ') + 1))
 
 
-const checkMiddleSeat = function(seat){
-const row = seat.slice(-1)
-if(row.toLocaleLowerCase() === 'c'){
-  console.log('In the middle')
-}else{
-  console.log('Not the middle')
-}
-}
+// const checkMiddleSeat = function(seat){
+// const row = seat.slice(-1)
+// if(row.toLocaleLowerCase() === 'c'){
+//   console.log('In the middle')
+// }else{
+//   console.log('Not the middle')
+// }
+// }
 
 
-checkMiddleSeat(`11b`)
+// checkMiddleSeat(`11b`)
 
 
 
