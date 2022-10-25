@@ -48,6 +48,68 @@ const restaurant = {
   },
 };
 
+// TODO Working with Strings PART 3
+
+// console.log('a+very+nice+string'.split('+').join(' '))
+
+// console.log('Carlos Becerra'.split(' '))
+
+const [firstName, lastName] = 'Carlos Becerra'.split(' ')
+// console.log(firstName, lastName)
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ')
+// console.log(newName)
+
+// * Capitalize a full name
+
+// const newPassanger = 'juan carlos flores becerra';
+
+// const arrWords = newPassanger.split(' ') ;
+
+// const arrCapWords = []
+
+// arrWords.forEach(word=>{
+//   const lower_word = word.toLowerCase()
+//   arrCapWords.push(lower_word[0].toUpperCase()+lower_word.slice(1))
+// })
+
+// console.log(arrCapWords.join(' '))
+
+// * FIXME: Padding
+
+// const message = ' Go to gate 23! '
+// console.log(message.padStart(25, '+'))
+// const padMessage = message.padStart(25, '+').padEnd(35, '+')
+// console.log(padMessage)
+// console.log(padMessage.length)
+
+
+// * FIXME: Example
+
+
+const maskCreditCard = function(numbers){
+const last_number = String(numbers).slice(-4)
+
+console.log(last_number.padStart(String(numbers).length ,'*'))
+
+}
+
+
+// maskCreditCard(123456789)
+
+// * FIXME: Repeat method
+
+const message2 = 'Bad waether ... All Departures Delayed... \n'
+
+// console.log(message2.repeat(4))
+
+const planesInLane = function(n){
+  console.log(`Therea are ${n} planes in line ${'B==D\n'.repeat(n)}`)
+}
+
+// planesInLane(3)
+
+
 // TODO Working with Stringa PART 2
 
 const airline = 'TAP Air Portugal'
@@ -115,20 +177,20 @@ const plane = 'Airbus A32neo'
 
 // FIXME: Practice excercise
 
-const checkBaggage = function(items){
-  const baggage = String(items).toLowerCase()
-  if(baggage.includes('gun') || baggage.includes('knife')){
-    console.log('You are not allowed aboard')
-  }else{
-    console.log('Welcome aboard!')
-  }
-}
+// const checkBaggage = function(items){
+//   const baggage = String(items).toLowerCase()
+//   if(baggage.includes('gun') || baggage.includes('knife')){
+//     console.log('You are not allowed aboard')
+//   }else{
+//     console.log('Welcome aboard!')
+//   }
+// }
 
-checkBaggage('I have a laptop, some Food and a pocket Knife')
+// checkBaggage('I have a laptop, some Food and a pocket Knife')
 
-checkBaggage('Socks and camera')
+// checkBaggage('Socks and camera')
 
-checkBaggage('Got some snacks and a gun for protection');
+// checkBaggage('Got some snacks and a gun for protection');
 
 
 
