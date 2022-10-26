@@ -4,6 +4,32 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+
+// FIXME: Last exercise
+
+
+const rows = flights.split('+')
+
+
+const events = function(arrEvent) {
+  const [name, myfrom, myto, time] = arrEvent
+  const name_event = name.split('_').join(' ').trim()
+  const from = myfrom.toUpperCase().slice(0,3)
+  const to = myto.toUpperCase().slice(0,3)
+  const hour = time.replace(':', 'h')
+  const format_hour = [hour].join().padStart(hour.length + 1, '(').padEnd(hour.length + 2, ')')
+  const alert = name_event.startsWith('Delayed') && '!!! Delayed' || name_event
+  
+  console.log(`${alert} from ${from} to ${to} (${hour})`.padStart(36))
+}
+
+
+rows.forEach(row=>{
+  events(row.split(';'))
+})
+
+
+
 const openingHours = {
   thu: {
     open: 12,
