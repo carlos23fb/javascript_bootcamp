@@ -1,5 +1,23 @@
 'use strict';
 
+// TODO Functions returning functions
+
+// const greet = function(greeting){
+//     return function(name){
+//         console.log(`${greeting} ${name}`)
+//     }
+// }
+
+const greet = greeting => name => console.log(`${greeting} ${name}`)
+
+const greeterHey = greet('Hi')
+greeterHey('Jonas')
+greeterHey('Juan')
+
+greet('Hello')('Julian')
+
+
+
 // TODO Functions Accepting Callback functions
 
 const oneWord = function(str){
@@ -20,9 +38,7 @@ const transformer = function(str, fn){
 }
 
 
-transformer('JavaScript is the best!!', oneWord)
-
-
+// transformer('JavaScript is the best!!', oneWord)
 
 // * Example
 
@@ -46,7 +62,7 @@ const add = (a, b) => a + b;
 
 // ? Pass functions as arguments to OTHER functions (call back)
 
-const greet = () => console.log('Hey Juan');
+// const greet = () => console.log('Hey Juan');
 
 document.querySelector('button').addEventListener('click', greet)
 
