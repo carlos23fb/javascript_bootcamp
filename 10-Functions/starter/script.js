@@ -27,13 +27,13 @@ const eurowings = {
     
 }
 
-const book =  lufthansa.book;
+const book = lufthansa.book;
 
 // ! the const book is not the same as lufthansa.book so airline is undefined
 
 // book(23, 'Sara')
 
-// FIXME: Using the call methos to replace the object 
+// FIXME: Using the call method to replace the object 
 
 // book.call(eurowings, 23, 'Sara')
 // console.log(eurowings)
@@ -50,7 +50,7 @@ const swiss = {
 // book.call(swiss, 123, 'Carlos Becerra')
 
 
-// FIXME:
+// FIXME: apply method :
 
 const flightData = [583, 'George Copper']
 
@@ -59,6 +59,61 @@ const flightData = [583, 'George Copper']
 // book.call(swiss, ...flightData)
 
 // 
+
+// TODO Bind method
+
+// FIXME: Bind method
+
+const bookEW = book.bind(eurowings)
+const bookLX = book.bind(swiss)
+// bookEW(1234, 'Carlitos')
+// bookLX(321, 'Jaguar')
+
+
+// ? Set Parameters beforehand its a common pattern called partial application
+const bookEW23 = book.bind(eurowings, 23);
+// bookEW23('Carlos Flores')
+// bookEW23('Roberto')
+
+
+// FIXME: Real world example: Using objects and event listeners
+
+
+lufthansa.planes = 300;
+
+lufthansa.buyPlane = function(){
+    console.log(this)
+    this.planes++
+    console.log(this.planes)
+}
+
+// lufthansa.buyPlane()
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa))
+
+// FIXME: Partial aplication
+
+const addTax = (rate, value) => value + (value * rate)
+
+console.log(addTax(0.1, 200))
+
+// ? When you are setting the arguments beforehand its important to know that order mathers
+
+const addVAT = addTax.bind(null, 0.23)
+
+console.log(addVAT(100))
+
+//FIXME: Challenge
+
+const addIVA = rate => value => value + (value * rate)
+
+console.log(addIVA(0.21)(100))
+
+// ? With default rate
+
+const addVAT2 = addIVA(0.16)
+console.log(addVAT2(100))
+
 
 // TODO Functions returning functions
 
@@ -106,7 +161,7 @@ const high5 = function(){
     console.log('high 5!!')
 }
 
-document.body.addEventListener('click', high5)
+// document.body.addEventListener('click', high5)
 
 // TODO First-Class functions
 
