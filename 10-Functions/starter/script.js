@@ -1,5 +1,65 @@
 'use strict';
 
+// TODO The call and apply and methods
+
+
+
+const lufthansa = {
+    airline: 'lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    book : function (flightNum, name) {
+        console.log(`${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`)
+        this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name })
+    }
+
+}
+
+// lufthansa.book(123, 'Carlos')
+// lufthansa.book(635, 'Jhon Smith')
+
+// console.log(lufthansa.bookings)
+
+const eurowings = {
+    airline: 'lufthansa',
+    iataCode: 'LH',
+    bookings: [],
+    
+}
+
+const book =  lufthansa.book;
+
+// ! the const book is not the same as lufthansa.book so airline is undefined
+
+// book(23, 'Sara')
+
+// FIXME: Using the call methos to replace the object 
+
+// book.call(eurowings, 23, 'Sara')
+// console.log(eurowings)
+
+
+// book.call(lufthansa, 239, 'Maria Lopez')
+
+const swiss = {
+    airline: 'Swiss Air Lines',
+    iataCode: 'Lx',
+    bookings: []
+}
+
+// book.call(swiss, 123, 'Carlos Becerra')
+
+
+// FIXME:
+
+const flightData = [583, 'George Copper']
+
+// book.apply(swiss, flightData)
+
+// book.call(swiss, ...flightData)
+
+// 
+
 // TODO Functions returning functions
 
 // const greet = function(greeting){
@@ -11,10 +71,10 @@
 const greet = greeting => name => console.log(`${greeting} ${name}`)
 
 const greeterHey = greet('Hi')
-greeterHey('Jonas')
-greeterHey('Juan')
+// greeterHey('Jonas')
+// greeterHey('Juan')
 
-greet('Hello')('Julian')
+// greet('Hello')('Julian')
 
 
 
