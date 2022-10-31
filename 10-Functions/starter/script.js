@@ -1,13 +1,30 @@
 'use strict';
 
+// TODO Closures
+
+const secureBooking = function(){
+    let passangerCount = 0;
+    return function(){
+        passangerCount++;
+        console.log(`${passangerCount} passangers`)
+    }
+}
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker)
 // TODO Immediately Invoked Functions Expressions
 
 // ? IIFE
-(function(){
-    console.log('This will never run again!')
-})();
 
-(()=> console.log('Only run once'))()
+// (function(){
+//     console.log('This will never run again!')
+// })();
+
+// (()=> console.log('Only run once'))()
 
 
 // TODO The call and apply and methods
