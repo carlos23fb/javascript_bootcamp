@@ -1,7 +1,16 @@
 'use strict';
 
-// TODO The call and apply and methods
+// TODO Immediately Invoked Functions Expressions
 
+// ? IIFE
+(function(){
+    console.log('This will never run again!')
+})();
+
+(()=> console.log('Only run once'))()
+
+
+// TODO The call and apply and methods
 
 
 const lufthansa = {
@@ -95,24 +104,24 @@ document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind
 
 const addTax = (rate, value) => value + (value * rate)
 
-console.log(addTax(0.1, 200))
+// console.log(addTax(0.1, 200))
 
 // ? When you are setting the arguments beforehand its important to know that order mathers
 
 const addVAT = addTax.bind(null, 0.23)
 
-console.log(addVAT(100))
+// console.log(addVAT(100))
 
 //FIXME: Challenge
 
 const addIVA = rate => value => value + (value * rate)
 
-console.log(addIVA(0.21)(100))
+// console.log(addIVA(0.21)(100))
 
 // ? With default rate
 
 const addVAT2 = addIVA(0.16)
-console.log(addVAT2(100))
+// console.log(addVAT2(100))
 
 
 // TODO Functions returning functions

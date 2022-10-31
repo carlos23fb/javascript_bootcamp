@@ -1,16 +1,16 @@
 'use strict';
 
 const validAnswer = function (input) {
-    return (typeof(input) === 'number' && (input >= 0 && input <= 3))
+    return (typeof (input) === 'number' && (input >= 0 && input <= 3))
 }
 
-const asking = function(){
+const asking = function () {
     let answer = Number(prompt(`${this.question}\n${this.options.join('\n')} \n (Write option number)`))
-    if(validAnswer(answer)){
-        console.log("Valid answer!")
+    if (validAnswer(answer)) {
+
         this.answers[answer]++
-        console.log(this.answers)
-    }else{
+
+    } else {
         asking.apply(poll)
     }
 }
@@ -22,10 +22,20 @@ const poll = {
     answers: new Array(4).fill(0),
     registerNewAnswer: function () {
         asking.apply(poll)
+        this.displayResults('string')
     },
-    displayResults: function(type){
+    displayResults: function (type = 'string') {
+        if (type === 'string') {
 
+            console.log(`Poll results are ${this.answers.join(', ').trim()}`)
+
+        } else if (type === 'array') {
+            console.log(this.answers)
+        }
     }
 };
 
 document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll))
+
+poll.displayResults.call({ answers: [5, 2, 3] }, 'array')
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string')
