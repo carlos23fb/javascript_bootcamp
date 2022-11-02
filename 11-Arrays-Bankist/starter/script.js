@@ -75,6 +75,26 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO New at method
+
+const arr = [23, 11, 64];
+
+console.log(arr[0])
+
+console.log(arr.at(0))
+
+// ? Get the least element from an array with traditional logic
+
+console.log(arr[arr.length - 1])
+
+console.log(arr.slice(-1)[0])
+
+
+// ? Example with at method
+
+console.log(arr.at(-1))
+
+
 // TODO Simple Array functions
 
 // * FIXME: Slice Method
@@ -97,8 +117,8 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // * FIXME: Reverse
 
-const arr = 'a,b,c,d,e'.split(',')
-const arr2 = 'j,i,h,g,f'.split(',')
+// const arr = 'a,b,c,d,e'.split(',')
+// const arr2 = 'j,i,h,g,f'.split(',')
 
 
 // ? The reverse method mutates the array
@@ -108,7 +128,7 @@ const arr2 = 'j,i,h,g,f'.split(',')
 
 // * FIXME: Concat method
 
-const letters = arr.concat(arr2)
+// const letters = arr.concat(arr2)
 
 // console.log(letters)
 
