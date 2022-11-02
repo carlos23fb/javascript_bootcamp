@@ -74,6 +74,22 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+// TODO forEach on Maps and Sets
+
+// * FIXME: With Maps
+
+currencies.forEach((value, key, map)=>{
+  console.log(value, key)
+})
+
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR'])
+
+console.log(currenciesUnique)
+
+currenciesUnique.forEach((value, key, set)=>{
+  console.log(value, key)
+})
+
 
 // TODO Looping Arrays: forEach
 
@@ -85,13 +101,13 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   }
 // }
 
-movements.forEach((mov, i, arr) => {
-  if (mov > 0) {
-    console.log(`Movement ${i} You deposited ${mov}`)
-  } else {
-    console.log(`Movement ${i} You withdrew ${Math.abs(mov)}`)
-  }
-})
+// movements.forEach((mov, i, arr) => {
+//   if (mov > 0) {
+//     console.log(`Movement ${i} You deposited ${mov}`)
+//   } else {
+//     console.log(`Movement ${i} You withdrew ${Math.abs(mov)}`)
+//   }
+// })
 
 // console.log(Object.entries(movements))
 
