@@ -75,24 +75,54 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO Looping Arrays: forEach
+
+// for(const movement of movements){
+//   if(movement > 0){
+//     console.log(`You deposited ${movement}`)
+//   }else{
+//     console.log(`You withdrew ${Math.abs(movement)}`)
+//   }
+// }
+
+movements.forEach((mov, i, arr) => {
+  if (mov > 0) {
+    console.log(`Movement ${i} You deposited ${mov}`)
+  } else {
+    console.log(`Movement ${i} You withdrew ${Math.abs(mov)}`)
+  }
+})
+
+// console.log(Object.entries(movements))
+
+
+// Object.entries(movements).forEach(([index, value]) =>{
+//   console.log(index, value)
+// })
+
+// ? 'break' and 'continue' doesnt work in forEach loops
+
+
+
+
 // TODO New at method
 
-const arr = [23, 11, 64];
+// const arr = [23, 11, 64];
 
-console.log(arr[0])
+// console.log(arr[0])
 
-console.log(arr.at(0))
+// console.log(arr.at(0))
 
 // ? Get the least element from an array with traditional logic
 
-console.log(arr[arr.length - 1])
+// console.log(arr[arr.length - 1])
 
-console.log(arr.slice(-1)[0])
+// console.log(arr.slice(-1)[0])
 
 
 // ? Example with at method
 
-console.log(arr.at(-1))
+// console.log(arr.at(-1))
 
 
 // TODO Simple Array functions
