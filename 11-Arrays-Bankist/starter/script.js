@@ -110,7 +110,21 @@ const createUserName = function (accs) {
 
 createUserName(accounts)
 
-console.log(account1.username)
+// console.log(account1.username)
+
+
+// TODO The Filter method
+
+
+const deposits = movements.filter(movement => movement > 0)
+
+const withdrawals = movements.filter(movement => movement < 0)
+
+console.log(deposits)
+
+console.log(withdrawals)
+
+
 
 
 // TODO The Map method
