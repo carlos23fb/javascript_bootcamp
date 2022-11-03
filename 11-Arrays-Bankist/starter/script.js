@@ -62,19 +62,19 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 
-const displayMovements = function(movements){
+const displayMovements = function (movements) {
   containerMovements.innerHTML = ''
-  movements.forEach((mov, i)=>{
+  movements.forEach((mov, i) => {
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
         <div class="movements__row">
-          <div class="movements__type movements__type--${type}">${i+1} ${type.toUpperCase()}</div>
+          <div class="movements__type movements__type--${type}">${i + 1} ${type.toUpperCase()}</div>
           <div class="movements__date">3 days ago</div>
           <div class="movements__value">${mov}</div>
         </div>
         `
-        containerMovements.insertAdjacentHTML('afterbegin', html)
+    containerMovements.insertAdjacentHTML('afterbegin', html)
   })
 }
 
@@ -94,6 +94,28 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO The Map method
+
+
+const euroToUsd = 1.1;
+
+const eurConversion = movements.map(movement => Math.fround(movement * euroToUsd))
+
+console.log(eurConversion)
+
+
+const movementsDescription = movements.map((mov, i, arr) => {
+  if (mov > 0) {
+    return `Movement ${i+1} You deposited ${mov}`
+  } else {
+    return `Movement ${i} You withdrew ${Math.abs(mov)}`
+  }
+})
+
+console.log(movementsDescription)
+
+
+
 // TODO Data transormation: map, filter, reduce
 
 // ? FIXME: Map method returns an array of results
@@ -111,10 +133,9 @@ console.log(filterResult)
 
 // ? FIXME: Boils 'reduces' all array elements down to one single value
 
-const reduceResult = [3, 1, 4, 3, 2].reduce((prev, current) => prev+current)
+const reduceResult = [3, 1, 4, 3, 2].reduce((prev, current) => prev + current)
 
 console.log(reduceResult)
-
 
 
 // TODO forEach on Maps and Sets
