@@ -94,6 +94,25 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO Computing usernames
+
+const user = 'Steven Thomas Williams'; // stw
+
+const createUserName = function (accs) {
+  accs.forEach(acc => {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+  })
+}
+
+createUserName(accounts)
+
+console.log(account1.username)
+
+
 // TODO The Map method
 
 
@@ -101,20 +120,18 @@ const euroToUsd = 1.1;
 
 const eurConversion = movements.map(movement => Math.fround(movement * euroToUsd))
 
-console.log(eurConversion)
+// console.log(eurConversion)
 
 
 const movementsDescription = movements.map((mov, i, arr) => {
   if (mov > 0) {
-    return `Movement ${i+1} You deposited ${mov}`
+    return `Movement ${i + 1} You deposited ${mov}`
   } else {
     return `Movement ${i} You withdrew ${Math.abs(mov)}`
   }
 })
 
-console.log(movementsDescription)
-
-
+// console.log(movementsDescription)
 
 // TODO Data transormation: map, filter, reduce
 
@@ -122,20 +139,20 @@ console.log(movementsDescription)
 
 const mapResult = [3, 1, 4, 3, 2].map(current => current * 2)
 
-console.log(mapResult)
+// console.log(mapResult)
 
 
 // ? FIXME: Filter method returns a new array contains the array elements that passed a specified test condition
 
 const filterResult = [3, 1, 4, 3, 2].filter(current => current > 2)
 
-console.log(filterResult)
+// console.log(filterResult)
 
 // ? FIXME: Boils 'reduces' all array elements down to one single value
 
 const reduceResult = [3, 1, 4, 3, 2].reduce((prev, current) => prev + current)
 
-console.log(reduceResult)
+// console.log(reduceResult)
 
 
 // TODO forEach on Maps and Sets
