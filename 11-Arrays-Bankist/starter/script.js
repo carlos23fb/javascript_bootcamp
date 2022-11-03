@@ -93,6 +93,30 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// TODO Data transormation: map, filter, reduce
+
+// ? FIXME: Map method returns an array of results
+
+const mapResult = [3, 1, 4, 3, 2].map(current => current * 2)
+
+console.log(mapResult)
+
+
+// ? FIXME: Filter method returns a new array contains the array elements that passed a specified test condition
+
+const filterResult = [3, 1, 4, 3, 2].filter(current => current > 2)
+
+console.log(filterResult)
+
+// ? FIXME: Boils 'reduces' all array elements down to one single value
+
+const reduceResult = [3, 1, 4, 3, 2].reduce((prev, current) => prev+current)
+
+console.log(reduceResult)
+
+
+
 // TODO forEach on Maps and Sets
 
 // * FIXME: With Maps
