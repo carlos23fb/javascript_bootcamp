@@ -94,6 +94,17 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO Calculating balance
+
+
+const calcDisplayBalance = function(movements){
+  const balance = movements.reduce((prev, curr) => prev + curr)
+  labelBalance.textContent = `${balance}$`
+}
+
+calcDisplayBalance(account1.movements)
+
+
 // TODO Computing usernames
 
 const user = 'Steven Thomas Williams'; // stw
@@ -112,6 +123,21 @@ createUserName(accounts)
 
 // console.log(account1.username)
 
+// TODO The Reduce method
+
+const balance = movements.reduce((prev, current) => prev + current)
+
+// console.log(balance)
+
+
+// * FIXME: Maximum value
+
+
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov , movements[0])
+
+console.log(max)
+
+
 
 // TODO The Filter method
 
@@ -120,9 +146,9 @@ const deposits = movements.filter(movement => movement > 0)
 
 const withdrawals = movements.filter(movement => movement < 0)
 
-console.log(deposits)
+// console.log(deposits)
 
-console.log(withdrawals)
+// console.log(withdrawals)
 
 
 
