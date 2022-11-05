@@ -80,6 +80,37 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements)
 
+
+const calcDisplaySummary = function (movements) {
+
+
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((prev, current) => prev + current)
+  labelSumIn.textContent = `${incomes}$`
+
+
+  const withdrawals = movements
+    .filter(mov => mov < 0)
+    .reduce((prev, current) => prev + current)
+  labelSumOut.textContent = `${Math.abs(withdrawals)}$`
+
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter(mov => mov >= 1)
+    .reduce((prev, curr) => prev + curr)
+  
+    labelSumInterest.textContent = `${interest}$`
+
+    console.log(interest)
+}
+
+
+
+calcDisplaySummary(account1.movements)
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -97,7 +128,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // TODO Calculating balance
 
 
-const calcDisplayBalance = function(movements){
+const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((prev, curr) => prev + curr)
   labelBalance.textContent = `${balance}$`
 }
@@ -123,6 +154,18 @@ createUserName(accounts)
 
 // console.log(account1.username)
 
+
+// TODO Chaining methods
+
+const euroToUsd = 1.1;
+
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map((mov, i, arr) => mov * euroToUsd)
+  .reduce((prev, curr) => prev + curr)
+
+console.log(totalDepositsUSD)
+
 // TODO The Reduce method
 
 const balance = movements.reduce((prev, current) => prev + current)
@@ -133,9 +176,9 @@ const balance = movements.reduce((prev, current) => prev + current)
 // * FIXME: Maximum value
 
 
-const max = movements.reduce((acc, mov) => acc > mov ? acc : mov , movements[0])
+const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
 
-console.log(max)
+// console.log(max)
 
 
 
@@ -156,9 +199,9 @@ const withdrawals = movements.filter(movement => movement < 0)
 // TODO The Map method
 
 
-const euroToUsd = 1.1;
+// const euroToUsd = 1.1;
 
-const eurConversion = movements.map(movement => Math.fround(movement * euroToUsd))
+// const eurConversion = movements.map(movement => Math.fround(movement * euroToUsd))
 
 // console.log(eurConversion)
 
