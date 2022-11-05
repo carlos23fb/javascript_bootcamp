@@ -101,19 +101,16 @@ const calcDisplaySummary = function (movements) {
     .map(mov => (mov * 1.2) / 100)
     .filter(mov => mov >= 1)
     .reduce((prev, curr) => prev + curr)
-  
-    labelSumInterest.textContent = `${interest}$`
 
-    console.log(interest)
+  labelSumInterest.textContent = `${interest}$`
+
+
 }
 
 
 
 calcDisplaySummary(account1.movements)
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
-// LECTURES
 
 const currencies = new Map([
   ['USD', 'United States dollar'],
@@ -154,6 +151,30 @@ createUserName(accounts)
 
 // console.log(account1.username)
 
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+
+// ! LECTURES Section 11
+
+// TODO The find method
+
+const firstWithdrawal = movements.find(mov => mov < 0)
+
+// console.log(movements)
+// console.log(firstWithdrawal)
+
+console.log(accounts.find(acc => acc.username === 'jd'))
+
+let account
+
+for (const acc of accounts) {
+  if (acc.username === 'jd') { 
+
+    account = acc 
+  }
+}
+
+console.log(account)
 
 // TODO Chaining methods
 
@@ -164,7 +185,6 @@ const totalDepositsUSD = movements
   .map((mov, i, arr) => mov * euroToUsd)
   .reduce((prev, curr) => prev + curr)
 
-console.log(totalDepositsUSD)
 
 // TODO The Reduce method
 
