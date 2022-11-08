@@ -78,38 +78,34 @@ const displayMovements = function (movements) {
   })
 }
 
-displayMovements(account1.movements)
 
 
-const calcDisplaySummary = function (movements) {
+
+const calcDisplaySummary = function (acc) {
 
 
-  const incomes = movements
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((prev, current) => prev + current)
   labelSumIn.textContent = `${incomes}$`
 
 
-  const withdrawals = movements
+  const withdrawals = acc.movements
     .filter(mov => mov < 0)
     .reduce((prev, current) => prev + current)
   labelSumOut.textContent = `${Math.abs(withdrawals)}$`
 
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * acc.interestRate) / 100)
     .filter(mov => mov >= 1)
     .reduce((prev, curr) => prev + curr)
 
   labelSumInterest.textContent = `${interest}$`
 
-
 }
 
-
-
-calcDisplaySummary(account1.movements)
 
 
 const currencies = new Map([
@@ -122,6 +118,50 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO: Implementing login
+
+let currentAccount;
+
+btnLogin.addEventListener('click', (event) => {
+
+  // ? Prevent from for submiting
+
+  event.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value)
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`
+
+
+    containerApp.style.opacity = 100;
+
+    // TODO: Clear input fields
+
+    inputLoginUsername.value = inputLoginPin.value = ''
+
+    inputLoginPin.blur();
+    inputLoginUsername.blur();
+
+
+    // TODO: Display Balance
+
+    calcDisplayBalance(currentAccount.movements)
+
+    // TODO: Display Movements
+    displayMovements(currentAccount.movements)
+
+    // TODO: Display Summary
+
+    calcDisplaySummary(currentAccount)
+  }
+
+
+})
+
+
+
 // TODO Calculating balance
 
 
@@ -130,7 +170,7 @@ const calcDisplayBalance = function (movements) {
   labelBalance.textContent = `${balance}$`
 }
 
-calcDisplayBalance(account1.movements)
+
 
 
 // TODO Computing usernames
@@ -163,18 +203,18 @@ const firstWithdrawal = movements.find(mov => mov < 0)
 // console.log(movements)
 // console.log(firstWithdrawal)
 
-console.log(accounts.find(acc => acc.username === 'jd'))
+// console.log(accounts.find(acc => acc.username === 'jd'))
 
-let account
+// let account
 
-for (const acc of accounts) {
-  if (acc.username === 'jd') { 
+// for (const acc of accounts) {
+//   if (acc.username === 'jd') { 
 
-    account = acc 
-  }
-}
+//     account = acc 
+//   }
+// }
 
-console.log(account)
+// console.log(account)
 
 // TODO Chaining methods
 
