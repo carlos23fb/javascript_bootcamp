@@ -144,19 +144,58 @@ btnLogin.addEventListener('click', (event) => {
     inputLoginPin.blur();
     inputLoginUsername.blur();
 
+    // * FIXME: Display balance, movements and summary of the current user
 
-    // TODO: Display Balance
+    updateUi(currentAccount)
 
-    calcDisplayBalance(currentAccount.movements)
 
-    // TODO: Display Movements
-    displayMovements(currentAccount.movements)
-
-    // TODO: Display Summary
-
-    calcDisplaySummary(currentAccount)
   }
 
+
+})
+
+// TODO: Display Info
+
+const updateUi = function (acc) {
+
+  calcDisplayBalance(acc)
+
+  displayMovements(acc.movements)
+
+  calcDisplaySummary(acc)
+
+}
+
+
+// TODO: Implementing Transfers
+
+btnTransfer.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value)
+
+  const reciverAcc = accounts.find(acc => acc.username === inputTransferTo.value)
+
+  inputTransferAmount.value = ''
+  inputTransferTo.value = ''
+
+  inputTransferAmount.blur()
+  inputTransferTo.blur()
+
+  if (amount > 0 && amount
+    <= currentAccount.balance
+    && reciverAcc
+    && reciverAcc.username !== currentAccount.username) {
+    console.log(amount, reciverAcc)
+
+    currentAccount.movements.push(-amount)
+    reciverAcc.movements.push(amount)
+
+    updateUi(currentAccount)
+
+    console.log(currentAccount.balance)
+
+  }
 
 })
 
@@ -165,12 +204,11 @@ btnLogin.addEventListener('click', (event) => {
 // TODO Calculating balance
 
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((prev, curr) => prev + curr)
-  labelBalance.textContent = `${balance}$`
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((prev, curr) => prev + curr)
+  labelBalance.textContent = `${acc.balance}$`
+
 }
-
-
 
 
 // TODO Computing usernames
