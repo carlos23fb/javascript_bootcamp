@@ -118,6 +118,26 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// TODO: The findIndex method
+
+btnClose.addEventListener('click', (e) => {
+  e.preventDefault()
+
+  if (currentAccount.username === inputCloseUsername.value && Number(inputClosePin.value) === currentAccount.pin) {
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username)
+    
+    accounts.splice(index, 1)
+    containerApp.style.opacity = 0;
+    console.log(accounts)
+    
+  }
+  inputClosePin.value = inputCloseUsername.value = ''
+  inputClosePin.blur()
+  inputCloseUsername.blur()
+
+})
+
+
 // TODO: Implementing login
 
 let currentAccount;
