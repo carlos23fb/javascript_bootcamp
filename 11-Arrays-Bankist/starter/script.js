@@ -118,18 +118,34 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-// TODO: The findIndex method
+// TODO: Some and every
+
+
+btnLoan.addEventListener('click', (e) => {
+  e.preventDefault()
+  const amount = Number(inputLoanAmount.value)
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount / 10)) {
+    currentAccount.movements.push(amount)
+    updateUi(currentAccount)
+    inputLoanAmount.value = ''
+    inputLoanAmount.blur()
+  }
+})
+
+
+// TODO: The findIndex method (Delete account)
 
 btnClose.addEventListener('click', (e) => {
   e.preventDefault()
 
   if (currentAccount.username === inputCloseUsername.value && Number(inputClosePin.value) === currentAccount.pin) {
     const index = accounts.findIndex(acc => acc.username === currentAccount.username)
-    
+
     accounts.splice(index, 1)
     containerApp.style.opacity = 0;
     console.log(accounts)
-    
+
   }
   inputClosePin.value = inputCloseUsername.value = ''
   inputClosePin.blur()
@@ -253,6 +269,44 @@ createUserName(accounts)
 /////////////////////////////////////////////////
 
 // ! LECTURES Section 11
+
+// TODO some and every
+
+// * some
+
+// console.log(movements)
+
+// * FIXME: EQUALITY
+
+// console.log(movements.includes(-130))
+
+// * FIXME: CONDITION
+
+const anyDepostis = movements.some(mov => mov === -130)
+
+// console.log(movements.some(mov=> mov > 0))
+
+// console.log(anyDepostis)
+
+// * every
+
+// ? Every element in the array needs to fullfill the condtion in order to return true
+
+console.log(movements.every(mov => typeof (mov) === 'number'))
+console.log(movements.every(mov => typeof (mov) === 'string'))
+
+console.log(account4)
+console.log(account4.movements.every(mov => mov > 0))
+
+
+// TODO Separate callback
+
+const deposit = mov => mov > 0;
+
+console.log(movements.some(deposit))
+console.log(movements.every(deposit))
+console.log(movements.filter(deposit))
+
 
 // TODO The find method
 
