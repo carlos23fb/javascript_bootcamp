@@ -270,6 +270,52 @@ createUserName(accounts)
 
 // ! LECTURES Section 11
 
+// TODO flat and flatMap
+
+
+// * FIXME: flat
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
+
+console.log(arr.flat())
+
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]
+
+
+
+const flatten = function (items) {
+
+  const arr = []
+
+  items.forEach(item => {
+    if (Array.isArray(item)) {
+      arr.push(...flatten(item))
+    } else {
+      arr.push(item)
+    }
+  })
+  return arr
+}
+
+
+// console.log(flatten(arrDeep))
+
+// const accountsMovements = accounts.map(acc => acc.movements)
+
+// console.log(accountsMovements.flat().reduce((prev, curr) => prev + curr))
+// console.log(accountsMovements.flat().reduce((prev, curr) => prev + curr))
+
+const accountsMovements = accounts.map(acc => acc.movements).flat().reduce((prev, curr) => prev + curr)
+
+console.log(accountsMovements)
+
+const overalBalance = accounts.flatMap(acc => acc.movements).reduce((prev, curr) => prev + curr)
+
+console.log(overalBalance)
+
+// console.log(flatten(accountsMovements).reduce((prev, curr) => prev + curr))
+
+
 // TODO some and every
 
 // * some
@@ -292,20 +338,20 @@ const anyDepostis = movements.some(mov => mov === -130)
 
 // ? Every element in the array needs to fullfill the condtion in order to return true
 
-console.log(movements.every(mov => typeof (mov) === 'number'))
-console.log(movements.every(mov => typeof (mov) === 'string'))
+// console.log(movements.every(mov => typeof (mov) === 'number'))
+// console.log(movements.every(mov => typeof (mov) === 'string'))
 
-console.log(account4)
-console.log(account4.movements.every(mov => mov > 0))
+// console.log(account4)
+// console.log(account4.movements.every(mov => mov > 0))
 
 
 // TODO Separate callback
 
 const deposit = mov => mov > 0;
 
-console.log(movements.some(deposit))
-console.log(movements.every(deposit))
-console.log(movements.filter(deposit))
+// console.log(movements.some(deposit))
+// console.log(movements.every(deposit))
+// console.log(movements.filter(deposit))
 
 
 // TODO The find method
