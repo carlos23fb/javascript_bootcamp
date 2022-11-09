@@ -64,8 +64,8 @@ const inputClosePin = document.querySelector('.form__input--pin');
 
 const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ''
-  const movs = sort ? movements.slice().sort((a,b)=> a-b) : movements
-    movs.forEach((mov, i) => {
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements
+  movs.forEach((mov, i) => {
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
@@ -124,7 +124,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 let sorted = false
 
-btnSort.addEventListener('click', (e)=>{
+btnSort.addEventListener('click', (e) => {
   e.preventDefault()
   displayMovements(currentAccount.movements, !sorted)
   sorted = !sorted
@@ -283,6 +283,46 @@ createUserName(accounts)
 
 // ! LECTURES Section 11
 
+
+// TODO More ways of creating and filling arrays
+
+const arr = [1, 2, 3, 4, 5, 6, 7,]
+
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7))
+
+// * Empty arrays + fill method
+
+const x = new Array(7)
+
+// console.log(x)
+
+// console.log(x.map(() => 5))
+
+x.fill(1, 3, 5)
+x.fill(1)
+// console.log(x)
+
+
+arr.fill(23, 2, 6)
+
+// console.log(arr)
+
+// * Array.from
+
+const y = Array.from({ length: 7 }, () => 1)
+// console.log(y)
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1)
+// console.log(z)
+
+labelBalance.addEventListener('click', () => {
+  const movementsUI = Array.from(document.querySelectorAll('.movements__value'), el => Number(el.textContent));
+
+  console.log(movementsUI)
+})
+
+
+
 // TODO Sorting Arrays
 
 const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
@@ -294,7 +334,7 @@ const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
 
 // Sorting numbers
 
-console.log(movements)
+// console.log(movements)
 
 // * Ascending
 movements.sort((a, b) => {
@@ -302,7 +342,7 @@ movements.sort((a, b) => {
   if (b > a) return -1
 })
 
-console.log(movements)
+// console.log(movements)
 
 // * Descending
 movements.sort((a, b) => {
@@ -310,14 +350,14 @@ movements.sort((a, b) => {
   if (b > a) return 1
 })
 
-console.log(movements)
+// console.log(movements)
 
 // TODO flat and flatMap
 
 
 // * FIXME: flat
 
-const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
+const my_arr = [[1, 2, 3], [4, 5, 6], 7, 8]
 
 // console.log(arr.flat())
 
