@@ -62,9 +62,10 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = ''
-  movements.forEach((mov, i) => {
+  const movs = sort ? movements.slice().sort((a,b)=> a-b) : movements
+    movs.forEach((mov, i) => {
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
@@ -117,6 +118,18 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// TODO: Sort movements
+
+
+let sorted = false
+
+btnSort.addEventListener('click', (e)=>{
+  e.preventDefault()
+  displayMovements(currentAccount.movements, !sorted)
+  sorted = !sorted
+})
+
 
 // TODO: Some and every
 
@@ -270,6 +283,35 @@ createUserName(accounts)
 
 // ! LECTURES Section 11
 
+// TODO Sorting Arrays
+
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha']
+
+// console.log(owners.sort())
+
+// ? Sort method also mutates the array
+// console.log(owners)
+
+// Sorting numbers
+
+console.log(movements)
+
+// * Ascending
+movements.sort((a, b) => {
+  if (a > b) return 1
+  if (b > a) return -1
+})
+
+console.log(movements)
+
+// * Descending
+movements.sort((a, b) => {
+  if (a > b) return -1
+  if (b > a) return 1
+})
+
+console.log(movements)
+
 // TODO flat and flatMap
 
 
@@ -277,7 +319,7 @@ createUserName(accounts)
 
 const arr = [[1, 2, 3], [4, 5, 6], 7, 8]
 
-console.log(arr.flat())
+// console.log(arr.flat())
 
 const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8]
 
@@ -307,11 +349,11 @@ const flatten = function (items) {
 
 const accountsMovements = accounts.map(acc => acc.movements).flat().reduce((prev, curr) => prev + curr)
 
-console.log(accountsMovements)
+// console.log(accountsMovements)
 
 const overalBalance = accounts.flatMap(acc => acc.movements).reduce((prev, curr) => prev + curr)
 
-console.log(overalBalance)
+// console.log(overalBalance)
 
 // console.log(flatten(accountsMovements).reduce((prev, curr) => prev + curr))
 
