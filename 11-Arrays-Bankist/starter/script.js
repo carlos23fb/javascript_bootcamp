@@ -283,10 +283,58 @@ createUserName(accounts)
 
 // ! LECTURES Section 11
 
+// TODO Array methods practice
+
+// * TODO: num 1
+
+const bankDepositsum = accounts.flatMap(acc => acc.movements).filter(mov => mov > 0).reduce((prev, curr) => prev + curr)
+
+// console.log(bankDepositsum)
+
+// * TODO: num 2
+
+// const numDeposits1000 = accounts.flatMap(acc => acc.movements).filter(mov => mov >= 1000).length
+
+// console.log(numDeposits1000)
+
+
+const numDeposits1000 = accounts.flatMap(acc => acc.movements).reduce((count, cur) =>
+  (cur >= 1000 ? count + 1 : count), 0)
+
+// console.log(numDeposits1000)
+
+
+// * TODO: num 3
+
+const { deposits, withdrawals } = accounts.flatMap(acc => acc.movements).reduce((sums, cur) => {
+  cur > 0 ? sums.deposits += cur : sums.withdrawals += cur;
+  return sums
+}, { deposits: 0, withdrawals: 0 })
+
+// console.log(deposits, withdrawals)
+
+// * TODO: num 4
+
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'the', 'but', 'or', 'on', 'in', 'with', 'and'];
+
+  const capitalize = str =>  str[0].toUpperCase() + str.slice(1);
+
+  const titleCase = title.toLowerCase()
+    .split(' ')
+    .map(word => exceptions.includes(word) ? word : capitalize(word)).join(' ')
+  return capitalize(titleCase)
+
+}
+
+console.log(convertTitleCase('this is A nice title'))
+console.log(convertTitleCase('And here is another title with an example'))
+
+
 
 // TODO More ways of creating and filling arrays
 
-const arr = [1, 2, 3, 4, 5, 6, 7,]
+const arr = [1, 2, 3, 4, 5, 6, 7]
 
 // console.log(new Array(1, 2, 3, 4, 5, 6, 7))
 
@@ -485,9 +533,9 @@ const max = movements.reduce((acc, mov) => acc > mov ? acc : mov, movements[0])
 // TODO The Filter method
 
 
-const deposits = movements.filter(movement => movement > 0)
+// const deposits = movements.filter(movement => movement > 0)
 
-const withdrawals = movements.filter(movement => movement < 0)
+// const withdrawals = movements.filter(movement => movement < 0)
 
 // console.log(deposits)
 
