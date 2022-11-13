@@ -356,4 +356,41 @@ document.querySelector('.logo').addEventListener('click', e => {
 // console.log(123423545346456352532452346456n)
 // console.log(BigInt(123123454523452345634563457))
 
-// Dates
+//  TODO Dates
+
+
+// * FIXME: Create a date
+
+
+const now = new Date()
+// console.log(now)
+
+// console.log(new Date('Nov 12 2022 19:43:04'))
+
+
+// console.log(new Date('December 24, 2015'))
+
+// console.log(new Date(account1.movementsDates[0]))
+
+// console.log(new Date(2037, 10, 19, 15, 23, 51))
+
+// ? Remember: like indexes months starts in 0 :) 
+
+// console.log(new Date(2037, 10, 31))
+
+
+// Working with dates
+
+const future = new Date(2037, 10, 19, 15, 23)
+console.log(future)
+console.log(future.getFullYear())
+console.log(future.getMonth()+1)
+console.log(future.getTime())
+
+console.log(new Date(2142282180000))
+
+console.log(Date.now())
+
+future.setFullYear(2040)
+console.log(future)
+
