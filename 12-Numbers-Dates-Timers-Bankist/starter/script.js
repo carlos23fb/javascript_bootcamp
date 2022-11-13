@@ -291,44 +291,45 @@ const randomInt = (min, max) => Math.flor(Math.random() * ((max - min) + 1) + mi
 
 // * Rounding  integers
 
-console.log(Math.trunc(23.3))
+// console.log(Math.trunc(23.3))
 
-console.log(Math.round(23.4))
+// console.log(Math.round(23.4))
 
 
 console.log('--------')
 
 
-console.log(Math.ceil(23.3))
-console.log(Math.ceil(23.9))
+// console.log(Math.ceil(23.3))
+// console.log(Math.ceil(23.9))
 
 
 // Rounding decimals
 
-console.log((2.7).toFixed(0))
+// console.log((2.7).toFixed(0))
 
 
-console.log(5 % 2)
+// console.log(5 % 2)
 
 
+// TODO Remainder operator
 
 const number_arr = [1, 2, 3, 4, 5, 6]
 
-number_arr.forEach(number => {
-  if (number % 2 === 0) { console.log(`${number}  is even`) } else console.log(`${number} is odd`)
-})
+// number_arr.forEach(number => {
+//   if (number % 2 === 0) { console.log(`${number}  is even`) } else console.log(`${number} is odd`)
+// })
 
 
 const any_even_number = number_arr.some(number => number % 2 === 0)
-console.log(any_even_number)
+// console.log(any_even_number)
 
 const { even, odds } = number_arr.reduce((lists, curr) => {
   curr % 2 === 0 ? lists.even.push(curr) : lists.odds.push(curr)
   return lists
 }, { even: [], odds: [] })
 
-console.log(even)
-console.log(odds)
+// console.log(even)
+// console.log(odds)
 
 
 
@@ -341,3 +342,10 @@ document.querySelector('.logo').addEventListener('click', e => {
     if(i % 2 === 0) row.style.backgroundColor = 'orangered'
   })
 })
+
+// TODO Numeric separators
+
+
+const diameter = 28_712_242_345_453;
+
+console.log(diameter)
