@@ -91,9 +91,8 @@ const displayMovements = function (movements, sort = false) {
 
     const html = `
       <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
+        <div class="movements__type movements__type--${type}">${i + 1
+      } ${type}</div>
         <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
@@ -166,9 +165,8 @@ btnLogin.addEventListener('click', function (e) {
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
     // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]
+      }`;
     containerApp.style.opacity = 100;
 
     // Clear input fields
@@ -308,3 +306,38 @@ console.log(Math.ceil(23.9))
 // Rounding decimals
 
 console.log((2.7).toFixed(0))
+
+
+console.log(5 % 2)
+
+
+
+const number_arr = [1, 2, 3, 4, 5, 6]
+
+number_arr.forEach(number => {
+  if (number % 2 === 0) { console.log(`${number}  is even`) } else console.log(`${number} is odd`)
+})
+
+
+const any_even_number = number_arr.some(number => number % 2 === 0)
+console.log(any_even_number)
+
+const { even, odds } = number_arr.reduce((lists, curr) => {
+  curr % 2 === 0 ? lists.even.push(curr) : lists.odds.push(curr)
+  return lists
+}, { even: [], odds: [] })
+
+console.log(even)
+console.log(odds)
+
+
+
+
+
+document.querySelector('.logo').addEventListener('click', e => {
+  const allmovements = [...document.querySelectorAll(".movements__row")]
+
+  allmovements.forEach((row, i) => {
+    if(i % 2 === 0) row.style.backgroundColor = 'orangered'
+  })
+})
