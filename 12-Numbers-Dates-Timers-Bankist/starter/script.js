@@ -346,6 +346,14 @@ document.querySelector('.logo').addEventListener('click', e => {
 // TODO Numeric separators
 
 
-const diameter = 28_712_242_345_453;
+// const diameter = 28_712_242_345_453;
 
-console.log(diameter)
+// console.log(diameter)
+
+
+// TODO BigInt
+
+// console.log(123423545346456352532452346456n)
+// console.log(BigInt(123123454523452345634563457))
+
+// Dates
