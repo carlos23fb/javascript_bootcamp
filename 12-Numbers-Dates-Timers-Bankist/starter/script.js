@@ -22,8 +22,8 @@ const account1 = {
     '2020-04-01T10:17:24.185Z',
     '2020-05-08T14:11:59.604Z',
     '2020-05-27T17:01:17.194Z',
-    '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2022-11-12T01:36:17.929Z',
+    '2022-11-12T01:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT', // de-DE
@@ -81,6 +81,27 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+
+const formatMovements = function (date) {
+
+  const calcDaysPassed = (date1, date2) => Math.abs((date2 - date1) / (1000 * 60 * 60 * 24))
+
+  const daysPassed = Math.round(calcDaysPassed(new Date(), date))
+  console.log(daysPassed)
+
+  if (daysPassed === 0) return 'Today'
+  if (daysPassed === 1) return 'Yesterday'
+  if (daysPassed <= 7) return `${daysPassed} days ago`
+  else {
+    const day = `${date.getDate()}`.padStart(2, 0)
+    const month = `${date.getMonth() + 1}`.padStart(2, 0)
+    const year = date.getFullYear()
+    return `${day}/${month}/${year}`
+  }
+
+}
+
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -90,11 +111,11 @@ const displayMovements = function (acc, sort = false) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const date = new Date(acc.movementsDates[i])
-    const day = `${date.getDate()}`.padStart(2, 0)
-    const month = `${date.getMonth() + 1}`.padStart(2, 0)
-    const year = date.getFullYear()
-    const displayDate = `${day}/${month}/${year}`
-    
+
+
+    const displayDate = formatMovements(date)
+
+
 
     const html = `
       <div class="movements__row">
@@ -406,15 +427,25 @@ document.querySelector('.logo').addEventListener('click', e => {
 // Working with dates
 
 const future = new Date(2037, 10, 19, 15, 23)
-console.log(future)
-console.log(future.getFullYear())
-console.log(future.getMonth() + 1)
-console.log(future.getTime())
+// console.log(future)
+// console.log(future.getFullYear())
+// console.log(future.getMonth() + 1)
+// console.log(future.getTime())
 
-console.log(new Date(2142282180000))
+// console.log(new Date(2142282180000))
 
-console.log(Date.now())
+// console.log(Date.now())
 
-future.setFullYear(2040)
-console.log(future)
+// future.setFullYear(2040)
+// console.log(future)
 
+// TODO Operations with dates
+
+// console.log(Number(future))
+// console.log(+future)
+
+
+const calcDaysPassed = (date1, date2) => Math.abs((date2 - date1) / (1000 * 60 * 60 * 24))
+const days1 = calcDaysPassed(new Date(2037, 4, 14), new Date(2037, 3, 14))
+
+// console.log(days1)
