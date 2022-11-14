@@ -298,12 +298,15 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Number(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(new Date().toISOString());
+    setTimeout(function () {
+      // Add movement
+      currentAccount.movements.push(amount);
 
-    // Update UI
-    updateUI(currentAccount);
+      currentAccount.movementsDates.push(new Date().toISOString());
+
+      // Update UI
+      updateUI(currentAccount);
+    }, 4000)
   }
   inputLoanAmount.value = '';
 });
@@ -501,8 +504,6 @@ const days1 = calcDaysPassed(new Date(2037, 4, 14), new Date(2037, 3, 14))
 
 
 
-
-
 const number1 = interFormat('es-MX', 13.5)
 
 
@@ -514,4 +515,24 @@ const numberOptions = {
 
 }
 
-console.log(interFormat(navigator.language, 1000000, numberOptions))
+// console.log(interFormat(navigator.language, 1000000, numberOptions))
+
+// TODO setTimeout
+
+const ingredients = ['olives', 'spinach']
+
+const pizzaTimer = setTimeout((ing1, ing2) => console.log(`Heres is yor pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients)
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer)
+
+
+
+setInterval(() => {
+  const now = new Date()
+  const hour = now.getHours()
+  const minutes = now.getMinutes()
+  const seconds = String(now.getSeconds()).padStart(2,0)
+  console.log(`${hour}:${minutes}:${seconds}`)
+}, 1000)
