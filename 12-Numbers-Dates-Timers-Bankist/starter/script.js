@@ -204,9 +204,47 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
+
+const startLogOutTimer = function () {
+
+
+
+  const tick = () => {
+
+    const min = String(Math.trunc(time / 60)).padStart(2, 0)
+    const seconds = String(time % 60).padStart(2, 0)
+
+    // In each call, print the remaining time yo UI 
+    labelTimer.textContent = `${min}:${seconds}`;
+
+    
+    // When 0 seconds, stop timer and log out user
+    if (time === 0) {
+      clearInterval(timer)
+      containerApp.style.opacity = 0;
+      labelWelcome.textContent = 'Log in to get started'
+    }
+
+    time--
+
+  }
+
+  // Set the time to 5 minutes
+
+  let time = 10;
+
+  tick();
+
+  const timer = setInterval(tick, 1000);
+  return timer
+
+}
+
+
+
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
 
 currentAccount = account1
@@ -264,6 +302,10 @@ btnLogin.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    if(timer) clearInterval(timer)
+
+    timer = startLogOutTimer()
   }
 });
 
@@ -290,6 +332,9 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }
+
+  clearInterval(timer)
+  timer = startLogOutTimer()
 });
 
 btnLoan.addEventListener('click', function (e) {
@@ -306,9 +351,13 @@ btnLoan.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
+
     }, 4000)
   }
   inputLoanAmount.value = '';
+
+  clearInterval(timer)
+  timer = startLogOutTimer()
 });
 
 btnClose.addEventListener('click', function (e) {
@@ -529,10 +578,10 @@ if (ingredients.includes('spinach')) clearTimeout(pizzaTimer)
 
 
 
-setInterval(() => {
-  const now = new Date()
-  const hour = now.getHours()
-  const minutes = now.getMinutes()
-  const seconds = String(now.getSeconds()).padStart(2,0)
-  console.log(`${hour}:${minutes}:${seconds}`)
-}, 1000)
+// setInterval(() => {
+//   const now = new Date()
+//   const hour = now.getHours()
+//   const minutes = now.getMinutes()
+//   const seconds = String(now.getSeconds()).padStart(2, 0)
+//   console.log(`${hour}:${minutes}:${seconds}`)
+// }, 1000)
