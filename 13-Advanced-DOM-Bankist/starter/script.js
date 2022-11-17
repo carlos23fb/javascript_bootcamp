@@ -202,3 +202,22 @@ btnScrollTo.addEventListener('click', e => {
     behavior: 'smooth'
   })
 })
+
+const alertH1 = e =>{
+  alert('addEventListener: You are reading the heading')
+
+  
+}
+
+const h1 = document.querySelector('h1');
+
+h1.addEventListener('mouseleave', alertH1)
+
+// * Removing event listener after 3 seconds
+
+setTimeout(() => h1.removeEventListener('mouseleave', alertH1), 3000)
+
+// h1.onmouseenter = e => {
+//   alert('addEventListener: Great')
+// }
+
