@@ -96,7 +96,7 @@ header.append(message)
 
 // * Removing element
 
-document.querySelector('.btn--close-cookie').addEventListener('click', (e)=>{
+document.querySelector('.btn--close-cookie').addEventListener('click', (e) => {
   e.preventDefault()
   message.remove()
 })
@@ -111,7 +111,7 @@ message.style.width = '120%'
 
 // ? You can only read style properties from a inline style 
 
-console.log(message.style.backgroundColor)
+// console.log(message.style.backgroundColor)
 
 // ? Get all computed styles with the getComputedStyle method
 
@@ -119,7 +119,7 @@ console.log(message.style.backgroundColor)
 
 message.style.height = Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px'
 
-console.log(message.style)
+// console.log(message.style)
 
 
 // document.documentElement.style.setProperty('--color-primary', 'orangered')
@@ -127,18 +127,18 @@ console.log(message.style)
 // Attributes 
 
 const logo = document.querySelector('.nav__logo')
-console.log(logo.alt)
-console.log(logo.src)
-console.log(logo.className)
+// console.log(logo.alt)
+// console.log(logo.src)
+// console.log(logo.className)
 
 // ? unable to read custonm prperties
 
-console.log(logo.designer) // return undefined
+// console.log(logo.designer) // return undefined
 
 // ? Reading custom propertie from a html element
 
 
-console.log(logo.getAttribute('designer'))
+// console.log(logo.getAttribute('designer'))
 
 
 logo.alt = 'Beautiful minimalist logo'
@@ -150,22 +150,55 @@ logo.setAttribute('company', 'Bankist')
 
 // * Get relative path to element FIXME:
 
-console.log(logo.getAttribute('src'))
+// console.log(logo.getAttribute('src'))
 
-const link  = document.querySelector('.nav__link--btn');
-console.log(link.href)
-console.log(link.getAttribute('href'))
+const link = document.querySelector('.nav__link--btn');
+// console.log(link.href)
+// console.log(link.getAttribute('href'))
 
 // TODO Data Attributes
 
-console.log(logo.dataset.versionNumber)
+// console.log(logo.dataset.versionNumber)
 
 
 // TODO Classes
 
-logo.classList.add('c', 'j')
-logo.classList.remove('c', 'j')
-logo.classList.toggle('c')
-logo.classList.contains('c')
+// logo.classList.add('c', 'j')
+// logo.classList.remove('c', 'j')
+// logo.classList.toggle('c')
+// logo.classList.contains('c')
 
-logo.clasName = 'Jonas'
+// logo.clasName = 'Jonas'
+
+// TODO: Implementing Smooth Scrolling
+
+const btnScrollTo = document.querySelector('.btn--scroll-to')
+
+const section1 = document.querySelector('#section--1')
+
+btnScrollTo.addEventListener('click', e => {
+  e.preventDefault()
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords)
+  console.log(e.target.getBoundingClientRect())
+
+  console.log('Current Scrool (X/Y)', window.pageXOffset, window.pageYOffset)
+
+  console.log('Height widht',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth)
+
+
+  // * Smoot Scroolling  in the old way
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset)
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth'
+  // })
+  // * Smoot Scroolling in modern way
+  section1.scrollIntoView({
+    behavior: 'smooth'
+  })
+})
