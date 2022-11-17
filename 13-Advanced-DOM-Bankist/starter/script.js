@@ -203,10 +203,10 @@ btnScrollTo.addEventListener('click', e => {
   })
 })
 
-const alertH1 = e =>{
+const alertH1 = e => {
   alert('addEventListener: You are reading the heading')
 
-  
+
 }
 
 const h1 = document.querySelector('h1');
@@ -221,3 +221,24 @@ setTimeout(() => h1.removeEventListener('mouseleave', alertH1), 3000)
 //   alert('addEventListener: Great')
 // }
 
+// TODO Event propagation un practice
+
+const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+
+const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`
+
+document.querySelector('.nav__link').addEventListener('click', function(e) {
+  this.style.backgroundColor = randomColor()
+  console.log('LINK', e.target, e.currentTarget)
+  // e.stopPropagation()
+})
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  this.style.backgroundColor = randomColor()
+  console.log('CONTAINER', e.target, e.currentTarget)
+})
+
+document.querySelector('.nav').addEventListener('click', function(e){
+  this.style.backgroundColor = randomColor()
+  console.log('NAV', e.target, e.currentTarget)
+}, false)
