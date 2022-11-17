@@ -7,6 +7,9 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to')
+
+const section1 = document.querySelector('#section--1')
 
 const openModal = function (e) {
   e.preventDefault()
@@ -33,6 +36,68 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+
+// TODO: Implementing Smooth Scrolling
+
+
+
+btnScrollTo.addEventListener('click', e => {
+  e.preventDefault()
+  const s1coords = section1.getBoundingClientRect();
+  // console.log(s1coords)
+  // console.log(e.target.getBoundingClientRect())
+
+  // console.log('Current Scrool (X/Y)', window.pageXOffset, window.pageYOffset)
+
+  // console.log('Height widht',
+  //   document.documentElement.clientHeight,
+  //   document.documentElement.clientWidth)
+
+
+  // * Smoot Scroolling  in the old way
+  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset)
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth'
+  // })
+
+
+  // * Smoot Scroolling in modern way
+  section1.scrollIntoView({
+    behavior: 'smooth'
+  })
+})
+
+
+// TODO: Page Navigation
+
+// document.querySelectorAll('.nav__link').forEach(function(el){
+//   el.addEventListener('click', function(e){
+//     e.preventDefault()
+//     const id = this.getAttribute('href')
+//     document.querySelector(id).scrollIntoView({
+//       behavior: 'smooth'
+//     })
+//   })
+// })
+
+// * Event delegation
+
+document.querySelector('.nav__links').addEventListener('click', function(e){
+  e.preventDefault()
+
+  // ? Matching strategy
+
+  if(e.target.classList.contains('nav__link')){
+    document.querySelector(e.target.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    })
+  }
+})
+
 
 // TODO Selecting elements
 
@@ -170,52 +235,21 @@ const link = document.querySelector('.nav__link--btn');
 
 // logo.clasName = 'Jonas'
 
-// TODO: Implementing Smooth Scrolling
-
-const btnScrollTo = document.querySelector('.btn--scroll-to')
-
-const section1 = document.querySelector('#section--1')
-
-btnScrollTo.addEventListener('click', e => {
-  e.preventDefault()
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords)
-  console.log(e.target.getBoundingClientRect())
-
-  console.log('Current Scrool (X/Y)', window.pageXOffset, window.pageYOffset)
-
-  console.log('Height widht',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth)
 
 
-  // * Smoot Scroolling  in the old way
-  // window.scrollTo(s1coords.left + window.pageXOffset, s1coords.top + window.pageYOffset)
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth'
-  // })
-  // * Smoot Scroolling in modern way
-  section1.scrollIntoView({
-    behavior: 'smooth'
-  })
-})
-
-const alertH1 = e => {
-  alert('addEventListener: You are reading the heading')
+// const alertH1 = e => {
+//   alert('addEventListener: You are reading the heading')
 
 
-}
+// }
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
-h1.addEventListener('mouseleave', alertH1)
+// h1.addEventListener('mouseleave', alertH1)
 
-// * Removing event listener after 3 seconds
+// // * Removing event listener after 3 seconds
 
-setTimeout(() => h1.removeEventListener('mouseleave', alertH1), 3000)
+// setTimeout(() => h1.removeEventListener('mouseleave', alertH1), 3000)
 
 // h1.onmouseenter = e => {
 //   alert('addEventListener: Great')
@@ -223,22 +257,22 @@ setTimeout(() => h1.removeEventListener('mouseleave', alertH1), 3000)
 
 // TODO Event propagation un practice
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+// const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`
+// const randomColor = () => `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`
 
-document.querySelector('.nav__link').addEventListener('click', function(e) {
-  this.style.backgroundColor = randomColor()
-  console.log('LINK', e.target, e.currentTarget)
-  // e.stopPropagation()
-})
+// document.querySelector('.nav__link').addEventListener('click', function(e) {
+//   this.style.backgroundColor = randomColor()
+//   console.log('LINK', e.target, e.currentTarget)
+//   // e.stopPropagation()
+// })
 
-document.querySelector('.nav__links').addEventListener('click', function(e) {
-  this.style.backgroundColor = randomColor()
-  console.log('CONTAINER', e.target, e.currentTarget)
-})
+// document.querySelector('.nav__links').addEventListener('click', function(e) {
+//   this.style.backgroundColor = randomColor()
+//   console.log('CONTAINER', e.target, e.currentTarget)
+// })
 
-document.querySelector('.nav').addEventListener('click', function(e){
-  this.style.backgroundColor = randomColor()
-  console.log('NAV', e.target, e.currentTarget)
-}, false)
+// document.querySelector('.nav').addEventListener('click', function(e){
+//   this.style.backgroundColor = randomColor()
+//   console.log('NAV', e.target, e.currentTarget)
+// }, false)
