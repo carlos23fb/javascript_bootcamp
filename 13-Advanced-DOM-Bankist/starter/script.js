@@ -11,6 +11,16 @@ const btnScrollTo = document.querySelector('.btn--scroll-to')
 
 const section1 = document.querySelector('#section--1')
 
+
+const tabs = document.querySelectorAll('.operations__tab')
+
+const tabsContainer = document.querySelector('.operations__tab-container')
+
+const tabsContent = document.querySelectorAll('.operations__content')
+
+
+const nav = document.querySelector('.nav')
+
 const openModal = function (e) {
   e.preventDefault()
   modal.classList.remove('hidden');
@@ -102,11 +112,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 // TODO: Tabbed component
 
-const tabs = document.querySelectorAll('.operations__tab')
-
-const tabsContainer = document.querySelector('.operations__tab-container')
-
-const tabsContent = document.querySelectorAll('.operations__content')
 
 tabsContainer.addEventListener('click', function (e) {
   e.preventDefault()
@@ -132,7 +137,7 @@ tabsContainer.addEventListener('click', function (e) {
   // console.log(id)
 
   const content = document.querySelector(`.operations__content--${id}`)
-  
+
   tabsContent.forEach(c => c.classList.remove('operations__content--active'))
 
   content.classList.add('operations__content--active')
@@ -140,6 +145,33 @@ tabsContainer.addEventListener('click', function (e) {
 
 })
 
+// TODO Passing arguments to event handlers
+// TODO Menu fade animation
+
+const handleHover = function (e, opacity) {
+  if (e.target.classList.contains('nav__link')) {
+    const link = e.target
+    const siblings = link.closest('.nav').querySelectorAll('.nav__link')
+    const logo = link.closest('.nav').querySelector('img')
+
+
+    siblings.forEach(el => {
+      if (el !== link) {
+
+        el.style.opacity = this;
+
+      }
+      logo.style.opacity = this;
+    })
+
+
+  }
+}
+
+
+nav.addEventListener('mouseover', handleHover.bind(0.5))
+
+nav.addEventListener('mouseout', handleHover.bind(1))
 
 
 // TODO Selecting elements
