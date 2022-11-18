@@ -168,10 +168,23 @@ const handleHover = function (e, opacity) {
   }
 }
 
-
 nav.addEventListener('mouseover', handleHover.bind(0.5))
 
 nav.addEventListener('mouseout', handleHover.bind(1))
+
+
+// TODO Implementing a Sticky Navigation: The Scroll Event
+
+const inintialCoords = section1.getBoundingClientRect()
+
+console.log(inintialCoords)
+
+window.addEventListener('scroll', function () {
+
+  if (window.scrollY > inintialCoords.top) nav.classList.add('sticky'); else nav.classList.remove('sticky');
+
+})
+
 
 
 // TODO Selecting elements
