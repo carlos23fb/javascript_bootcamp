@@ -42,6 +42,7 @@ document.addEventListener('keydown', function (e) {
 
 
 
+
 btnScrollTo.addEventListener('click', e => {
   e.preventDefault()
   const s1coords = section1.getBoundingClientRect();
@@ -86,17 +87,59 @@ btnScrollTo.addEventListener('click', e => {
 
 // * Event delegation
 
-document.querySelector('.nav__links').addEventListener('click', function(e){
+document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault()
 
   // ? Matching strategy
 
-  if(e.target.classList.contains('nav__link')){
+  if (e.target.classList.contains('nav__link')) {
     document.querySelector(e.target.getAttribute('href')).scrollIntoView({
       behavior: 'smooth'
     })
   }
 })
+
+
+// TODO: Tabbed component
+
+const tabs = document.querySelectorAll('.operations__tab')
+
+const tabsContainer = document.querySelector('.operations__tab-container')
+
+const tabsContent = document.querySelectorAll('.operations__content')
+
+tabsContainer.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  // ? Matching strategy
+  const clicked = e.target.closest('.operations__tab')
+  // console.log(clicked)
+
+  // Guard clause
+  if (!clicked) return;
+
+  // TODO Active tab
+
+  tabs.forEach(t => t.classList.remove('operations__tab--active'))
+
+  clicked.classList.add('operations__tab--active')
+
+  // TODO Active content area
+
+  // document.querySelector(`operations${}`)
+
+  const id = clicked.getAttribute('data-tab')
+  // console.log(id)
+
+  const content = document.querySelector(`.operations__content--${id}`)
+  
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'))
+
+  content.classList.add('operations__content--active')
+
+
+})
+
 
 
 // TODO Selecting elements
@@ -284,34 +327,34 @@ const h1 = document.querySelector('h1')
 
 // * Going down
 
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes)
-console.log(h1.children)
-h1.firstElementChild.style.color  ='white'
-h1.lastElementChild.style.color = 'black'
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes)
+// console.log(h1.children)
+// h1.firstElementChild.style.color  ='white'
+// h1.lastElementChild.style.color = 'black'
 
 // * Going upwards
 
-console.log(h1.parentNode)
-console.log(h1.parentElement)
+// console.log(h1.parentNode)
+// console.log(h1.parentElement)
 
-h1.closest('.header').style.background= 'var(--gradient-secondary)'
+// h1.closest('.header').style.background= 'var(--gradient-secondary)'
 
-h1.closest('h1').style.background = 'var(--gradient-primary)'
+// h1.closest('h1').style.background = 'var(--gradient-primary)'
 
 
 
 // * TODO: Going sideways: siblings
 
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling)
-console.log(h1.nextSibling)
+// console.log(h1.previousSibling)
+// console.log(h1.nextSibling)
 
-console.log(h1.parentElement.children);
+// console.log(h1.parentElement.children);
 
 
-[...h1.parentElement.children].forEach(function(el){
-  if(el !== h1) el.style.transform = 'scale(0.5)'
-})
+// [...h1.parentElement.children].forEach(function(el){
+//   if(el !== h1) el.style.transform = 'scale(0.5)'
+// })
