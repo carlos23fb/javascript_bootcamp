@@ -173,7 +173,7 @@ nav.addEventListener('mouseover', handleHover.bind(0.5))
 nav.addEventListener('mouseout', handleHover.bind(1))
 
 
-// TODO Implementing a Sticky Navigation: The Scroll Event
+// TODO: Implementing a Sticky Navigation: The Scroll Event
 
 // const inintialCoords = section1.getBoundingClientRect()
 
@@ -185,7 +185,7 @@ nav.addEventListener('mouseout', handleHover.bind(1))
 
 // })
 
-// TODO A Better Way: The Intersection Observer API
+// TODO: A Better Way: The Intersection Observer API
 
 // const obsCallback = function (entries, observer) {
 //   entries.forEach(entry => console.log(entry))
@@ -205,7 +205,7 @@ const header = document.querySelector('.header')
 const height = nav.getBoundingClientRect().height
 
 
-const stickyNav = function(entries){
+const stickyNav = function (entries) {
   const [entry] = entries;
   if (!entry.isIntersecting) nav.classList.add('sticky');
   else nav.classList.remove('sticky');
@@ -220,13 +220,39 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 headerObserver.observe(header)
 
 
+// TODO: Reveal sections
+
+const allSelections = document.querySelectorAll('.section')
+
+const revealSection = function (entries, observer) {
+
+  const [entry] = entries
+  console.log(entry)
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden')
+  observer.unobserve(entry.target)
+  
+
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+})
+
+
+allSelections.forEach(section => {
+  section.classList.add('section--hidden')
+  sectionObserver.observe(section);
+})
+
 // TODO Selecting elements
 
 // console.log(document.head)
 
 // const header = document.querySelector('.header')
 
-const allSelections = document.querySelectorAll('.section')
+// const allSelections = document.querySelectorAll('.section')
 
 // console.log(allSelections)
 
