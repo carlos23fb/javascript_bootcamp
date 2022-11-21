@@ -592,3 +592,24 @@ const h1 = document.querySelector('h1')
 // [...h1.parentElement.children].forEach(function(el){
 //   if(el !== h1) el.style.transform = 'scale(0.5)'
 // })
+
+// TODO Lifecycle DOM Events
+
+// * DOm content loaded
+
+document.addEventListener('DOMContentLoaded', function(e){
+  console.log('HTML parsed and DOM tree built!!', e)
+})
+
+window.addEventListener('load', function(e){
+  console.log('Page fully loaded', e)
+})
+
+
+// window.addEventListener('beforeunload', function(e){
+
+//   console.log(e)
+//   e.returnValue = ''
+// })
+
+
