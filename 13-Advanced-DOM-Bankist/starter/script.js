@@ -597,11 +597,11 @@ const h1 = document.querySelector('h1')
 
 // * DOm content loaded
 
-document.addEventListener('DOMContentLoaded', function(e){
+document.addEventListener('DOMContentLoaded', function (e) {
   console.log('HTML parsed and DOM tree built!!', e)
 })
 
-window.addEventListener('load', function(e){
+window.addEventListener('load', function (e) {
   console.log('Page fully loaded', e)
 })
 
