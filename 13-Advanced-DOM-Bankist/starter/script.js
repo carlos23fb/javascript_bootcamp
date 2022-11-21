@@ -242,7 +242,7 @@ const sectionObserver = new IntersectionObserver(revealSection, {
 
 
 allSelections.forEach(section => {
-  section.classList.add('section--hidden')
+  // section.classList.add('section--hidden')
   sectionObserver.observe(section);
 })
 
@@ -276,6 +276,47 @@ const imgOberver = new IntersectionObserver(loadImg, {
 })
 
 imgTargets.forEach(img => imgOberver.observe(img))
+
+// TODO: Building a Slider component
+
+let curSlide = 0
+
+const maxSlide = document.querySelectorAll('.slide').length - 1
+
+const slides = document.querySelectorAll('.slide');
+
+const slider = document.querySelector('.slider')
+
+const btnLeft = document.querySelector('.slider__btn--left')
+
+const btnRight = document.querySelector('.slider__btn--right')
+
+const goToSlide = function (slide) {
+  slides.forEach((s, i) => {
+    s.style.transform = `translateX(${100 * (i - slide)}%)`
+  })
+}
+
+goToSlide(0)
+
+const nextSlide = function () {
+  if (curSlide === maxSlide) {
+    curSlide = 0
+  } else {
+    curSlide++
+  }
+
+  goToSlide(curSlide)
+}
+
+const prevSlide = function () {
+  if (curSlide > 0) curSlide--
+  goToSlide(curSlide)
+}
+
+btnRight.addEventListener('click', nextSlide)
+btnLeft.addEventListener('click', prevSlide)
+
 
 
 // TODO Selecting elements
