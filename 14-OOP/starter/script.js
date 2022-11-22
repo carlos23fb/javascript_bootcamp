@@ -3,11 +3,11 @@
 
 // TODO: Contstructor functions and the "new" opetator
 
-const Person =  function(firstName, birthYear){
+const Person = function (firstName, birthYear) {
 
     // Instance properties
     this.firstName = firstName,
-    this.birthYear = birthYear
+        this.birthYear = birthYear
 
 }
 
@@ -70,3 +70,29 @@ const arr = [3, 6, 7, 8]
 
 // console.log(arr.__proto__)
 
+// TODO: ES6 Classes
+
+
+// * Class expression
+
+// const PersonCl = class{
+
+// }
+
+// * Class declaration
+
+class PersonCl {
+    constructor(name, birthYear) {
+        this.name = name
+        this.birthYear = birthYear
+    }
+}
+
+const juan = new PersonCl('Juan Carlos', 1994)
+
+console.log(juan.birthYear)
+
+
+// ? 1. Classes are NOT hoisted
+// ? 2. Classes are first-class citizens
+// ? 3. Classes are executed in strict mode 
