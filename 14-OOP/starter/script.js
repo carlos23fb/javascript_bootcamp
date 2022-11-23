@@ -109,14 +109,14 @@ class PersonCl {
     }
 
     // * Instance method
-    
-    static hey(){
+
+    static hey() {
         console.log('Hey there!!')
     }
 
 }
 
-// const juan = new PersonCl('Juan Becerra', 1994)
+const juan = new PersonCl('Juan Becerra', 1994)
 
 
 // const walter = new PersonCl('Walter', 1965)
@@ -160,12 +160,45 @@ const account = {
 
 //  * Add static method to a class expression
 
-Person.hey = function(){
+Person.hey = function () {
     console.log('Hey')
 }
 
-Person.hey()
+// Person.hey()
 
 // matilda.hey() // ! hey method doesnt exist in the matilda instance of Person
 
-PersonCl.hey()
+// PersonCl.hey()
+
+
+// TODO: Object.create
+
+const PersonProto = {
+    calcAge() {
+        console.log(2022 - this.birthYear)
+    },
+
+    init(firstName, birthYear){
+        this.firstName = firstName
+        this.birthYear = birthYear
+    }
+}
+
+const steven = Object.create(PersonProto)
+
+console.log(steven)
+
+steven.name = 'Steven'
+steven.birthYear = 2002
+steven.calcAge()
+console.log(steven.__proto__)
+console.log(juan.__proto__)
+
+console.log(steven.__proto__ === PersonProto)
+console.log(juan.__proto__ === PersonCl.prototype)
+
+const sarah = Object.create(PersonProto);
+
+sarah.init('Sarah', 1979)
+
+sarah.calcAge()
