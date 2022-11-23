@@ -87,33 +87,39 @@ class PersonCl {
         this.birthYear = birthYear
     }
 
-    calcAge(){
-        console.log(2022- this.birthYear)
+    calcAge() {
+        console.log(2022 - this.birthYear)
     }
-    greet(){
+    greet() {
         console.log(`Hey ${this.fullName}`)
     }
 
-    get age(){
+    get age() {
         return 2022 - this.birthYear
     }
 
-    set fullName(name){
+    set fullName(name) {
         console.log(name)
-        if(name.includes(' ')) this._fullName = name;
+        if (name.includes(' ')) this._fullName = name;
         else alert(`${name} is not a full name!`)
     }
 
-    get fullName(){
+    get fullName() {
         return this._fullName
+    }
+
+    // * Instance method
+    
+    static hey(){
+        console.log('Hey there!!')
     }
 
 }
 
-const juan = new PersonCl('Juan Becerra', 1994)
+// const juan = new PersonCl('Juan Becerra', 1994)
 
 
-const walter = new PersonCl('Walter', 1965)
+// const walter = new PersonCl('Walter', 1965)
 
 // console.log(juan.birthYear)
 
@@ -126,17 +132,18 @@ const walter = new PersonCl('Walter', 1965)
 // ? 3. Classes are executed in strict mode 
 
 // TODO: Setters and Getters
+
 //? Assesor properties
 
 const account = {
     owner: 'Jonas',
     movements: [200, 530, 120, 300],
 
-    get latest(){
+    get latest() {
         return this.movements.slice(-1).pop()
     },
 
-    set latest(mov){
+    set latest(mov) {
         this.movements.push(mov)
     }
 }
@@ -148,3 +155,17 @@ const account = {
 // console.log(account.movements)
 
 // console.log(juan.fullName)
+
+// TODO: Static Methods
+
+//  * Add static method to a class expression
+
+Person.hey = function(){
+    console.log('Hey')
+}
+
+Person.hey()
+
+// matilda.hey() // ! hey method doesnt exist in the matilda instance of Person
+
+PersonCl.hey()
