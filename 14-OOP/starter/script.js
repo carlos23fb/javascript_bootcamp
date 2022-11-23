@@ -82,17 +82,69 @@ const arr = [3, 6, 7, 8]
 // * Class declaration
 
 class PersonCl {
-    constructor(name, birthYear) {
-        this.name = name
+    constructor(fullName, birthYear) {
+        this.fullName = fullName
         this.birthYear = birthYear
     }
+
+    calcAge(){
+        console.log(2022- this.birthYear)
+    }
+    greet(){
+        console.log(`Hey ${this.fullName}`)
+    }
+
+    get age(){
+        return 2022 - this.birthYear
+    }
+
+    set fullName(name){
+        console.log(name)
+        if(name.includes(' ')) this._fullName = name;
+        else alert(`${name} is not a full name!`)
+    }
+
+    get fullName(){
+        return this._fullName
+    }
+
 }
 
-const juan = new PersonCl('Juan Carlos', 1994)
+const juan = new PersonCl('Juan Becerra', 1994)
 
-console.log(juan.birthYear)
+
+const walter = new PersonCl('Walter', 1965)
+
+// console.log(juan.birthYear)
+
+
+// console.log(juan.age)
 
 
 // ? 1. Classes are NOT hoisted
 // ? 2. Classes are first-class citizens
 // ? 3. Classes are executed in strict mode 
+
+// TODO: Setters and Getters
+//? Assesor properties
+
+const account = {
+    owner: 'Jonas',
+    movements: [200, 530, 120, 300],
+
+    get latest(){
+        return this.movements.slice(-1).pop()
+    },
+
+    set latest(mov){
+        this.movements.push(mov)
+    }
+}
+
+// console.log(account.latest)
+
+// account.latest = 23
+
+// console.log(account.movements)
+
+// console.log(juan.fullName)
