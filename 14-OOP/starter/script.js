@@ -118,6 +118,8 @@ class PersonCl {
 
 const juan = new PersonCl('Juan Becerra', 1994)
 
+console.log(juan)
+
 
 // const walter = new PersonCl('Walter', 1965)
 
