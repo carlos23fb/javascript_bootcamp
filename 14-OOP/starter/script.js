@@ -255,9 +255,26 @@ class StudentCl extends PersonCl {
     }
 }
 
-
-
 const martha = new StudentCl('Martha Jones', 2002, 'Computer Science')
 
-martha.introduce()
-martha.calcAge()
+// martha.introduce()
+// martha.calcAge()
+
+const StudentProto = Object.create(PersonProto);
+
+StudentProto.init = function(firstName, birthYear, course){
+    PersonProto.init.call(this, firstName, birthYear)
+    this.course = course
+}
+
+const jay = Object.create(StudentProto)
+
+StudentProto.introduce = function(){
+    console.log(`Hi my name is ${this.firstName}, I am a ${this.course} student`)
+}
+
+jay.init('Jay', 1997, 'Computer Science')
+
+jay.calcAge()
+
+jay.introduce()
