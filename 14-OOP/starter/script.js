@@ -143,7 +143,7 @@ class PersonCl {
 
 }
 
-const juan = new PersonCl('Juan Becerra', 1994)
+// const juan = new PersonCl('Juan Becerra', 1994)
 
 // console.log(juan)
 
@@ -250,31 +250,69 @@ class StudentCl extends PersonCl {
         console.log(`My name is ${this.fullName} and I study ${this.course}`)
     }
 
-    calcAge(){
+    calcAge() {
         console.log(`I'm ${2022 - this.birthYear} years old but as a student i feel more like ${2022 - this.birthYear + 10} years old`)
     }
 }
 
-const martha = new StudentCl('Martha Jones', 2002, 'Computer Science')
+// const martha = new StudentCl('Martha Jones', 2002, 'Computer Science')
 
 // martha.introduce()
 // martha.calcAge()
 
 const StudentProto = Object.create(PersonProto);
 
-StudentProto.init = function(firstName, birthYear, course){
+StudentProto.init = function (firstName, birthYear, course) {
     PersonProto.init.call(this, firstName, birthYear)
     this.course = course
 }
 
 const jay = Object.create(StudentProto)
 
-StudentProto.introduce = function(){
+StudentProto.introduce = function () {
     console.log(`Hi my name is ${this.firstName}, I am a ${this.course} student`)
 }
 
 jay.init('Jay', 1997, 'Computer Science')
 
-jay.calcAge()
+// jay.calcAge()
 
-jay.introduce()
+// jay.introduce()
+
+// TODO: Another Class Example ---------------------------------------------------------------------------
+
+
+class Account {
+    constructor(owner, currency, pin) {
+        this.owner = owner
+        this.currency = currency
+        this.pin = pin
+        this.movements = []
+
+        console.log(`Thanks for opening an account`)
+    }
+
+    deposit(movement) {
+        this.movements.push({ type: 'deposit', value: movement })
+    }
+
+    witdrawal(movement) {
+        this.movements.push({ type: 'witdrawal', value: movement })
+    }
+
+    set makemovement(movement) {
+        movement > 0 ? this.deposit(movement) : this.witdrawal(movement)
+    }
+
+    get balance() {
+        return this.movements.map(movement => movement.value).reduce((prev, curr) => prev + curr)
+    }
+
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111)
+console.log(acc1)
+
+acc1.makemovement = 100
+acc1.makemovement = -20
+console.log(acc1.balance)
