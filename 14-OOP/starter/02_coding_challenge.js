@@ -42,16 +42,3 @@ class Car {
     }
 
 }
-
-const mustang = new Car('Ford', 120)
-
-console.log(mustang)
-
-// TODO 2. Add a getter called 'speedUS' which returns the current speed in mi / h(divide by 1.6)
-
-
-// TODO 3. Add a setter called 'speedUS' which sets the current speed in mi / h(but
-// TODO converts it to km / h before storing the value, by multiplying the input by 1.6)
-
-
-console.log(mustang._speed)

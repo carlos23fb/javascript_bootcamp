@@ -4,12 +4,39 @@
 // TODO: Contstructor functions and the "new" opetator
 
 const Person = function (firstName, birthYear) {
-
     // Instance properties
     this.firstName = firstName,
         this.birthYear = birthYear
-
 }
+
+// TODO: Inheritance Between "Classes": Constructor Functions
+
+const Student = function(firstName, birthYear, course){
+
+    // ? Bind this to Person object
+    Person.call(this, firstName, birthYear)
+    this.course = course
+}
+
+
+// TODO: Linking prototypes
+
+Student.prototype = Object.create(Person.prototype)
+
+// Student.prototype.constructor = Student;
+
+
+Student.prototype.introduce = function(){
+    console.log(`My name is ${this.firstName} and I study ${this.course}`)
+}
+
+console.dir(Student)
+
+
+
+const mike = new Student('Mike', 1994, 'Computer Science')
+
+console.log(mike instanceof Person)
 
 const jonas = new Person('Jonas', 1991)
 
@@ -19,6 +46,7 @@ jonas.nickname = 'javascript redentor'
 // console.log(jonas)
 
 const matilda = new Person('Matilda', 1994)
+
 
 matilda.nickname = 'psyco'
 
@@ -50,7 +78,6 @@ Person.prototype.calcAge = function () {
 Person.prototype.species = 'Homo Sapiens'
 // console.log(jonas)
 // console.log(matilda)
-
 
 // console.log(jonas.hasOwnProperty('firstName'))
 
@@ -118,7 +145,7 @@ class PersonCl {
 
 const juan = new PersonCl('Juan Becerra', 1994)
 
-console.log(juan)
+// console.log(juan)
 
 
 // const walter = new PersonCl('Walter', 1965)
@@ -188,19 +215,20 @@ const PersonProto = {
 
 const steven = Object.create(PersonProto)
 
-console.log(steven)
+// console.log(steven)
 
 steven.name = 'Steven'
 steven.birthYear = 2002
-steven.calcAge()
-console.log(steven.__proto__)
-console.log(juan.__proto__)
+// steven.calcAge()
+// console.log(steven.__proto__)
+// console.log(juan.__proto__)
 
-console.log(steven.__proto__ === PersonProto)
-console.log(juan.__proto__ === PersonCl.prototype)
+// console.log(steven.__proto__ === PersonProto)
+// console.log(juan.__proto__ === PersonCl.prototype)
 
 const sarah = Object.create(PersonProto);
 
 sarah.init('Sarah', 1979)
 
-sarah.calcAge()
+// sarah.calcAge()
+
