@@ -11,7 +11,7 @@ const Person = function (firstName, birthYear) {
 
 // TODO: Inheritance Between "Classes": Constructor Functions
 
-const Student = function(firstName, birthYear, course){
+const Student = function (firstName, birthYear, course) {
 
     // ? Bind this to Person object
     Person.call(this, firstName, birthYear)
@@ -26,17 +26,17 @@ Student.prototype = Object.create(Person.prototype)
 // Student.prototype.constructor = Student;
 
 
-Student.prototype.introduce = function(){
+Student.prototype.introduce = function () {
     console.log(`My name is ${this.firstName} and I study ${this.course}`)
 }
 
-console.dir(Student)
+// console.dir(Student)
 
 
 
 const mike = new Student('Mike', 1994, 'Computer Science')
 
-console.log(mike instanceof Person)
+// console.log(mike instanceof Person)
 
 const jonas = new Person('Jonas', 1991)
 
@@ -207,7 +207,7 @@ const PersonProto = {
         console.log(2022 - this.birthYear)
     },
 
-    init(firstName, birthYear){
+    init(firstName, birthYear) {
         this.firstName = firstName
         this.birthYear = birthYear
     }
@@ -232,3 +232,32 @@ sarah.init('Sarah', 1979)
 
 // sarah.calcAge()
 
+// TODO: Inheritance Between "Classes": ES6 Classes
+
+
+// ? To implement Inheritance in es6 classes we need:
+// ? Extent keywords
+// ? Super function
+
+class StudentCl extends PersonCl {
+    constructor(fullName, birthYear, course) {
+        // Always needs to happen first!
+        super(fullName, birthYear)
+        this.course = course
+    }
+
+    introduce() {
+        console.log(`My name is ${this.fullName} and I study ${this.course}`)
+    }
+
+    calcAge(){
+        console.log(`I'm ${2022 - this.birthYear} years old but as a student i feel more like ${2022 - this.birthYear + 10} years old`)
+    }
+}
+
+
+
+const martha = new StudentCl('Martha Jones', 2002, 'Computer Science')
+
+martha.introduce()
+martha.calcAge()
