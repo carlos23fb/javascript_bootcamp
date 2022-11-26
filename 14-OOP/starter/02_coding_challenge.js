@@ -15,7 +15,7 @@
 
 // TODO 1. Re - create Challenge #1, but this time using an ES6 class (call it 'CarCl')
 
-class Car {
+class CarCl {
 
     constructor(make, speed){
         this.make = make

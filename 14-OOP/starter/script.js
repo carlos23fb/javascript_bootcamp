@@ -346,5 +346,3 @@ const acc1 = new Account('Jonas', 'EUR', 1111)
 acc1.witdrawal(15).deposit(1111)
 
 
-
-console.log(acc1)
