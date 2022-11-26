@@ -282,6 +282,7 @@ jay.init('Jay', 1997, 'Computer Science')
 // TODO: Another Class Example ---------------------------------------------------------------------------
 // TODO  Encapsulation: Protected Properties and Methods
 // TODO Encapsulation: Private Class Fields and Methods
+// TODO Chaining Methods
 
 
 // ? 1) Public fields
@@ -314,31 +315,36 @@ class Account {
 
     // * 4) Private methods
 
-    deposit(movement) {
-        this.#movements.push({ type: 'deposit', value: movement })
+    deposit(movement, type='deposit') {
+        this.#movements.push({ type: type, value: movement })
+        return this
     }
 
     witdrawal(movement) {
-        this.#movements.push({ type: 'witdrawal', value: movement })
+        this.deposit(-movement, 'witdrawal')
+        return this
     }
 
     set makemovement(movement) {
         movement > 0 ? this.deposit(movement) : this.witdrawal(movement)
+        
     }
 
     get balance() {
         return this.#movements.map(movement => movement.value).reduce((prev, curr) => prev + curr)
     }
-
 }
 
 const acc1 = new Account('Jonas', 'EUR', 1111)
-console.log(acc1)
 
-acc1.makemovement = 100
-acc1.makemovement = -20
-console.log(acc1.balance)
+// console.log(acc1)
+
+// console.log(acc1.balance)
 
 // acc1.#movements.push(1111) // ! SyntaxError: Private field '#movements' must be declared in an enclosing class
+
+acc1.witdrawal(15).deposit(1111)
+
+
 
 console.log(acc1)
