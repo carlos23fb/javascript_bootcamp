@@ -11,6 +11,9 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+
+let map, mapEvent;
+
 navigator.geolocation.getCurrentPosition(
     function (position) {
         const { latitude } = position.coords
@@ -20,7 +23,7 @@ navigator.geolocation.getCurrentPosition(
 
         const coords = [latitude, longitude]
 
-        const map = L.map('map')
+        map = L.map('map')
         map.setView(coords, 17);
         // console.log(map)
 
@@ -32,22 +35,33 @@ navigator.geolocation.getCurrentPosition(
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
 
-        map.on('click', function (mapEvent) {
+        map.on('click', function (mapE) {
 
-            const { lat, lng } = mapEvent.latlng
-            const newCoords = [lat, lng]
+            mapEvent = mapE
 
-            L.marker(newCoords).addTo(map)
-                .bindPopup(L.popup({
-                    keepInView: true,
-                    maxWidth: 250,
-                    minWidth: 100,
-                    autoClose: false,
-                    closeOnClick: false,
-                    className: 'running-popup'
-                }))
-                .setPopupContent('Workout')
-                .openPopup();
+            form.classList.remove('hidden')
+            inputDistance.focus()
+
+            // TODO Set popup when submit
+
+
+
+
+
+            // const { lat, lng } = mapEvent.latlng
+            // const newCoords = [lat, lng]
+
+            // L.marker(newCoords).addTo(map)
+            //     .bindPopup(L.popup({
+            //         keepInView: true,
+            //         maxWidth: 250,
+            //         minWidth: 100,
+            //         autoClose: false,
+            //         closeOnClick: false,
+            //         className: 'running-popup'
+            //     }))
+            //     .setPopupContent('Workout')
+            //     .openPopup();
 
         })
 
@@ -55,3 +69,41 @@ navigator.geolocation.getCurrentPosition(
     function () {
         alert('Could not get your posotion')
     })
+
+form.addEventListener('submit', function (e) {
+
+
+    e.preventDefault()
+
+
+    // TODO Clear input fields
+
+    inputDistance.value = ''
+    inputDuration.value = ''
+    inputCadence.value = ''
+    inputElevation.value = ''
+    form.classList.add('hidden')
+
+     // Display marker
+
+    const { lat, lng } = mapEvent.latlng
+    const newCoords = [lat, lng]
+
+    L.marker(newCoords).addTo(map)
+        .bindPopup(L.popup({
+            keepInView: true,
+            maxWidth: 250,
+            minWidth: 100,
+            autoClose: false,
+            closeOnClick: false,
+            className: 'running-popup'
+        }))
+        .setPopupContent('Workout')
+        .openPopup();
+})
+
+
+inputType.addEventListener('change', function(){
+    inputElevation.closest('.form__row').classList.toggle('form__row--hidden')
+    inputCadence.closest('.form__row').classList.toggle('form__row--hidden')
+})
