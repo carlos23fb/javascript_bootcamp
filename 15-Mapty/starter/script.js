@@ -22,6 +22,7 @@ navigator.geolocation.getCurrentPosition(
 
         const map = L.map('map')
         map.setView(coords, 17);
+        // console.log(map)
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -30,6 +31,25 @@ navigator.geolocation.getCurrentPosition(
         L.marker(coords).addTo(map)
             .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
             .openPopup();
+
+        map.on('click', function (mapEvent) {
+
+            const { lat, lng } = mapEvent.latlng
+            const newCoords = [lat, lng]
+
+            L.marker(newCoords).addTo(map)
+                .bindPopup(L.popup({
+                    keepInView: true,
+                    maxWidth: 250,
+                    minWidth: 100,
+                    autoClose: false,
+                    closeOnClick: false,
+                    className: 'running-popup'
+                }))
+                .setPopupContent('Workout')
+                .openPopup();
+
+        })
 
     },
     function () {
