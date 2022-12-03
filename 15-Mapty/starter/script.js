@@ -34,11 +34,11 @@ class Workout {
         const date = this.date.getDate()
 
         this.description = `${this.type[0].toUpperCase()}${this.type.slice(1).toLowerCase()} on ${month} ${date}`
-        
+
 
     }
 
-    click(){
+    click() {
         this.clicks++;
     }
 }
@@ -92,7 +92,17 @@ class App {
 
     constructor() {
 
+
+        // TODO Get user's position
+
         this._getPosition()
+
+        // TODO Get data from local storage
+
+        this._getLocalStorage()
+
+        // TODO Attach event handlers
+
         form.addEventListener('submit', this._newWorkout.bind(this))
         inputType.addEventListener('change', this._toggleElevationField)
         containerWorkouts.addEventListener('click', this._moveToPopup.bind(this))
@@ -116,14 +126,13 @@ class App {
 
         const { latitude } = position.coords
         const { longitude } = position.coords
-        console.log(`https://www.google.com/maps/@${latitude},${longitude}`)
+        
 
 
         const coords = [latitude, longitude]
 
         this.#map = L.map('map')
         this.#map.setView(coords, 17);
-        // console.log(map)
 
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -134,6 +143,10 @@ class App {
             .openPopup();
 
         this.#map.on('click', this._showForm.bind(this))
+
+        this.#workouts.forEach(workout => {
+            this._renderWorkoutMarker(workout)
+        })
 
         return this
 
@@ -230,7 +243,6 @@ class App {
         // TODO Add new object to workout array
         this.#workouts.push(workout)
 
-        console.log(workout)
 
 
         // TODO Render workout on map as marker
@@ -250,6 +262,8 @@ class App {
         // TODO Clear input fields
 
         this._hideForm()
+
+        this._setLocalStorage()
 
 
 
@@ -339,18 +353,37 @@ class App {
         const workout = this.#workouts.find(work => work.id === workoutEl.dataset.id)
 
 
-        workout.click()
-        console.log(workout)
+        // workout.click()
 
 
         this.#map.setView(workout.coords, 17, {
-            animate : true,
+            animate: true,
             pan: {
                 duration: 1
             },
 
         })
 
+    }
+
+    _setLocalStorage() {
+        localStorage.setItem('workout', JSON.stringify(this.#workouts));
+    }
+
+    _getLocalStorage() {
+        const data = JSON.parse(localStorage.getItem('workout'))
+
+        if (!data) return;
+
+        this.#workouts = data
+
+        this.#workouts.forEach(workout => {
+
+            this._renderWorkout(workout)
+
+        })
+
+        
     }
 
 }
