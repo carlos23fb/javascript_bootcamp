@@ -16,6 +16,7 @@ class Workout {
 
     id = Date.now() + ''.slice(-10)
     date = new Date();
+    clicks = 0;
 
     constructor(coords, distance, duration) {
         this.distance = distance
@@ -33,7 +34,12 @@ class Workout {
         const date = this.date.getDate()
 
         this.description = `${this.type[0].toUpperCase()}${this.type.slice(1).toLowerCase()} on ${month} ${date}`
+        
 
+    }
+
+    click(){
+        this.clicks++;
     }
 }
 
@@ -89,6 +95,7 @@ class App {
         this._getPosition()
         form.addEventListener('submit', this._newWorkout.bind(this))
         inputType.addEventListener('change', this._toggleElevationField)
+        containerWorkouts.addEventListener('click', this._moveToPopup.bind(this))
 
     }
 
@@ -141,7 +148,7 @@ class App {
 
     }
 
-    _hideForm(){
+    _hideForm() {
 
         inputDistance.value = ''
         inputDuration.value = ''
@@ -150,7 +157,7 @@ class App {
 
         form.style.display = 'none'
         form.classList.add('hidden')
-        setTimeout(()=> form.style.display = 'grid', 1000)
+        setTimeout(() => form.style.display = 'grid', 1000)
 
     }
 
@@ -323,7 +330,28 @@ class App {
 
     }
 
+    _moveToPopup(e) {
 
+        const workoutEl = e.target.closest('.workout')
+
+        if (!workoutEl) return;
+
+        const workout = this.#workouts.find(work => work.id === workoutEl.dataset.id)
+
+
+        workout.click()
+        console.log(workout)
+
+
+        this.#map.setView(workout.coords, 17, {
+            animate : true,
+            pan: {
+                duration: 1
+            },
+
+        })
+
+    }
 
 }
 
