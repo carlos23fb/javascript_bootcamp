@@ -46,6 +46,12 @@ const countriesContainer = document.querySelector('.countries');
 //     })
 // }
 
+const renderError = function (msg) {
+    countriesContainer.insertAdjacentText('beforeend', msg)
+    countriesContainer.style.opacity = 1
+}
+
+
 
 const renderCountry = function (data, className = '') {
     let html = `
@@ -120,14 +126,35 @@ const renderCountry = function (data, className = '') {
 const getCountryData = function (name) {
 
     fetch(`https://restcountries.com/v3.1/name/${name}`)
-        .then((response) => {
-            return response.json();
-        }).then((data) => {
+        .then(response =>
+            response.json()
+        ).then((data) => {
             const [result] = data
-            
+            console.log(result)
+
             renderCountry(result)
+
+            const neighbour = result.borders?.[0]
+
+            if (!neighbour) return
+
+
+            return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
+
+        }).then(response =>
+            response.json()
+        ).then(data => {
+            const [result] = data
+
+            renderCountry(result, 'neighbour')
+        }).catch(err => renderError(`${err}`))
+        .finally(() => {
+            
         })
 
 }
 
-getCountryData('mexico')
+
+btn.addEventListener('click', function () {
+    getCountryData('germany')
+})
