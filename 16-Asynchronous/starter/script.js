@@ -121,40 +121,84 @@ const renderCountry = function (data, className = '') {
 //     })
 // }
 
+const getJSON = function (url, errorMessage = 'Something went wrong') {
+    return fetch(url)
+        .then(response => {
 
+            console.log(response)
+
+            if (!response.ok)
+                throw new Error(errorMessage)
+
+            return response.json()
+        }
+        )
+}
 
 const getCountryData = function (name) {
 
-    fetch(`https://restcountries.com/v3.1/name/${name}`)
-        .then(response =>
-            response.json()
-        ).then((data) => {
-            const [result] = data
-            console.log(result)
+    getJSON(`https://restcountries.com/v3.1/name/${name}`, 'Country not found').then((data) => {
+        const [result] = data
+        console.log(result)
 
-            renderCountry(result)
+        renderCountry(result)
 
-            const neighbour = result.borders?.[0]
+        const neighbour = result.borders?.[0]
 
-            if (!neighbour) return
+        if (!neighbour) throw new Error('No neighbour found')
 
 
-            return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
+        return fetch(`https://restcountries.com/v3.1/alpha/${neighbour}`)
 
-        }).then(response =>
-            response.json()
-        ).then(data => {
-            const [result] = data
+    }).then(response =>
+        response.json()
+    ).then(data => {
+        const [result] = data
 
-            renderCountry(result, 'neighbour')
-        }).catch(err => renderError(`${err}`))
+        renderCountry(result, 'neighbour')
+    }).catch(err => renderError(`Somethingwent wrong ${err.message}`))
         .finally(() => {
-            
+
         })
 
 }
 
+// btn.addEventListener('click', function () {
+//     getCountryData('australia')
+// })
 
-btn.addEventListener('click', function () {
-    getCountryData('germany')
-})
+// TODO Coding Challenge #1
+
+
+
+// 1. Create a function 'whereAmI' which takes as inputs a latitude value('lat')
+// and a longitude value('lng')(these are GPS coordinates, examples are in test
+// data below)
+
+
+// 128698846499758126653x30944
+
+const whereAmI = function (lat, lng) {
+
+    fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+        .then(response => {
+            console.log(response)
+            if (!response.ok) 
+                throw new Error('Usage Limit Error')
+            return response.json()
+        })
+        .then(data => {
+
+            if(data.error) throw new Error(`${data.error.description}`)
+            console.log(data)
+            console.log(`You are in ${data.country}`)
+            const countryName = data.country.toLowerCase()
+
+            getCountryData(countryName)
+
+        }).catch(err => console.log(err.message))
+}
+whereAmI(-33.933, 18.474)
+
+
+

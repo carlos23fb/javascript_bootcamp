@@ -117,16 +117,13 @@ class App {
                     alert('Could not get your posotion')
                 })
         }
-
-        return this
-
     }
 
     _loadMap(position) {
 
         const { latitude } = position.coords
         const { longitude } = position.coords
-        
+
 
 
         const coords = [latitude, longitude]
@@ -383,7 +380,7 @@ class App {
 
         })
 
-        
+
     }
 
 }
