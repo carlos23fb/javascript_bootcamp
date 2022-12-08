@@ -163,9 +163,9 @@ const getCountryData = function (name) {
 
 }
 
-btn.addEventListener('click', function () {
-    getCountryData('mexico')
-})
+// btn.addEventListener('click', function () {
+//     getCountryData('mexico')
+// })
 
 // TODO Coding Challenge #1
 
@@ -178,27 +178,8 @@ btn.addEventListener('click', function () {
 
 // 128698846499758126653x30944
 
-// const whereAmI = function (lat, lng) {
 
-//     fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-//         .then(response => {
-//             console.log(response)
-//             if (!response.ok) 
-//                 throw new Error('Usage Limit Error')
-//             return response.json()
-//         })
-//         .then(data => {
 
-//             if(data.error) throw new Error(`${data.error.description}`)
-//             console.log(data)
-//             console.log(`You are in ${data.country}`)
-//             const countryName = data.country.toLowerCase()
-
-//             getCountryData(countryName)
-
-//         }).catch(err => console.log(err.message))
-// }
-// whereAmI(-33.933, 18.474)
 
 
 // // TODO The Event Loop in Practice
@@ -254,28 +235,68 @@ const wait = function (seconds) {
 // })
 
 
-wait(1)
-    .then(() => {
-        console.log('1 second')
-        return wait(1)
+// wait(1)
+//     .then(() => {
+//         console.log('1 second')
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log('2 second')
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log('3 second')
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log('4 second')
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log('5 second')
+//         return wait(1)
+//     })
+//     .then(() => {
+//         console.log('6 second')
+//         return wait(1)
+//     })
+
+
+// navigator.geolocation.getCurrentPosition(position => {
+//     console.log(position), err => console.log(err)
+// })
+
+
+const getPostion = function () {
+    return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(position => resolve(position), err => reject(new Error('Error country not found', err)))
     })
-    .then(() => {
-        console.log('2 second')
-        return wait(1)
+}
+
+
+const whereAmI = function () {
+
+    getPostion().then(position => {
+        const { latitude: lat, longitude: lng } = position.coords
+
+        return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
     })
-    .then(() => {
-        console.log('3 second')
-        return wait(1)
+    .then(response => {
+        console.log(response)
+        if (!response.ok)
+            throw new Error('Usage Limit Error')
+        return response.json()
     })
-    .then(() => {
-        console.log('4 second')
-        return wait(1)
+    .then(data => {
+        if (data.error) throw new Error(`${data.error.description}`)
+        console.log(data)
+        console.log(`You are in ${data.country}`)
+        const countryName = data.country.toLowerCase()
+
+        getCountryData(countryName)
+
     })
-    .then(() => {
-        console.log('5 second')
-        return wait(1)
-    })
-    .then(() => {
-        console.log('6 second')
-        return wait(1)
-    })
+    .catch(err => console.log(err.message))
+}
+
+btn.addEventListener('click', whereAmI)
