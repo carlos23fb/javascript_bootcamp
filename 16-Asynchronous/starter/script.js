@@ -163,9 +163,9 @@ const getCountryData = function (name) {
 
 }
 
-// btn.addEventListener('click', function () {
-//     getCountryData('australia')
-// })
+btn.addEventListener('click', function () {
+    getCountryData('mexico')
+})
 
 // TODO Coding Challenge #1
 
@@ -178,27 +178,41 @@ const getCountryData = function (name) {
 
 // 128698846499758126653x30944
 
-const whereAmI = function (lat, lng) {
+// const whereAmI = function (lat, lng) {
 
-    fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-        .then(response => {
-            console.log(response)
-            if (!response.ok) 
-                throw new Error('Usage Limit Error')
-            return response.json()
-        })
-        .then(data => {
+//     fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//         .then(response => {
+//             console.log(response)
+//             if (!response.ok) 
+//                 throw new Error('Usage Limit Error')
+//             return response.json()
+//         })
+//         .then(data => {
 
-            if(data.error) throw new Error(`${data.error.description}`)
-            console.log(data)
-            console.log(`You are in ${data.country}`)
-            const countryName = data.country.toLowerCase()
+//             if(data.error) throw new Error(`${data.error.description}`)
+//             console.log(data)
+//             console.log(`You are in ${data.country}`)
+//             const countryName = data.country.toLowerCase()
 
-            getCountryData(countryName)
+//             getCountryData(countryName)
 
-        }).catch(err => console.log(err.message))
-}
-whereAmI(-33.933, 18.474)
+//         }).catch(err => console.log(err.message))
+// }
+// whereAmI(-33.933, 18.474)
 
 
+console.log('Test start');
+
+setTimeout(() => console.log('0 sec Timer'), 0);
+
+Promise.resolve('Resolve Promise 1').then(res => console.log(res))
+
+
+Promise.resolve('Resolve Promise 2').then(res => {
+    for (let i = 0; i< 1000000000; i++) { }
+
+    console.log(res)
+})
+
+console.log('Test end')
 
