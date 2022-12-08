@@ -201,18 +201,81 @@ btn.addEventListener('click', function () {
 // whereAmI(-33.933, 18.474)
 
 
-console.log('Test start');
+// // TODO The Event Loop in Practice
 
-setTimeout(() => console.log('0 sec Timer'), 0);
+// console.log('Test start');
 
-Promise.resolve('Resolve Promise 1').then(res => console.log(res))
+// setTimeout(() => console.log('0 sec Timer'), 0);
+
+// Promise.resolve('Resolve Promise 1').then(res => console.log(res))
 
 
-Promise.resolve('Resolve Promise 2').then(res => {
-    for (let i = 0; i< 1000000000; i++) { }
+// Promise.resolve('Resolve Promise 2').then(res => {
+//     for (let i = 0; i< 1000000000; i++) { }
 
-    console.log(res)
-})
+//     console.log(res)
+// })
 
-console.log('Test end')
+// console.log('Test end')
 
+
+// const lotteryPromise = new Promise(function (resolve, reject) {
+
+//     console.log('Lotter draw is happening')
+//     setTimeout(() => {
+//         if (Math.random() >= 0.5) {
+//             resolve('You win 🤑')
+//         } else {
+//             reject(new Error('You lost your money 💩').message)
+//         }
+//     }, 2000)
+// })
+
+
+// lotteryPromise.then(response => {
+//     console.log(response)
+// }).catch(err => console.log(err))
+
+
+// TODO Promisifying setTimeout
+
+const wait = function (seconds) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, seconds * 1000)
+    })
+}
+
+// wait(2).then(() => {
+//     console.log('I waited 2 seconds')
+
+//     wait(1)
+// }).then(() => {
+//     console.log('I waited 1 second')
+// })
+
+
+wait(1)
+    .then(() => {
+        console.log('1 second')
+        return wait(1)
+    })
+    .then(() => {
+        console.log('2 second')
+        return wait(1)
+    })
+    .then(() => {
+        console.log('3 second')
+        return wait(1)
+    })
+    .then(() => {
+        console.log('4 second')
+        return wait(1)
+    })
+    .then(() => {
+        console.log('5 second')
+        return wait(1)
+    })
+    .then(() => {
+        console.log('6 second')
+        return wait(1)
+    })
