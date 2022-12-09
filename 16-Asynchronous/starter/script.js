@@ -274,29 +274,51 @@ const getPostion = function () {
 }
 
 
-const whereAmI = function () {
+// const whereAmI = function () {
 
-    getPostion().then(position => {
-        const { latitude: lat, longitude: lng } = position.coords
+//     getPostion().then(position => {
+//         const { latitude: lat, longitude: lng } = position.coords
 
-        return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
-    })
-    .then(response => {
-        console.log(response)
-        if (!response.ok)
-            throw new Error('Usage Limit Error')
-        return response.json()
-    })
-    .then(data => {
-        if (data.error) throw new Error(`${data.error.description}`)
-        console.log(data)
-        console.log(`You are in ${data.country}`)
-        const countryName = data.country.toLowerCase()
+//         return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+//     })
+//     .then(response => {
+//         console.log(response)
+//         if (!response.ok)
+//             throw new Error('Usage Limit Error')
+//         return response.json()
+//     })
+//     .then(data => {
+//         if (data.error) throw new Error(`${data.error.description}`)
+//         console.log(data)
+//         console.log(`You are in ${data.country}`)
+//         const countryName = data.country.toLowerCase()
 
-        getCountryData(countryName)
+//         getCountryData(countryName)
 
-    })
-    .catch(err => console.log(err.message))
+//     })
+//     .catch(err => console.log(err.message))
+// }
+
+
+
+// TODO: Consuming Promises with Async/Await
+
+const whereAmI = async function (country) {
+
+    const pos = await getPostion();
+
+    const { latitude: lat, longitude: lng } = pos.coords
+
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+
+    const dataGeo = await resGeo.json()
+
+    const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
+
+    const [data] = await res.json()
+
+    renderCountry(data)
 }
 
-btn.addEventListener('click', whereAmI)
+
+whereAmI('mexico')
