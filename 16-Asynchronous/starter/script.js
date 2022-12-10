@@ -339,14 +339,53 @@ const whereAmI = async function () {
 };
 
 
-(async function () {
+// (async function () {
+//     try {
+//         const city = await whereAmI();
+
+//         console.log(`2: ${city}`);
+//     } catch (err) {
+//         console.log(`2: ${err.message}`);
+//     };
+
+//     console.log(`3: Finished`)
+// })();
+
+
+const get3Countries = async function (c1, c2, c3) {
     try {
-        const city = await whereAmI();
+        // const [res1] = await getJSON(`https://restcountries.com/v3.1/name/${c1}`)
+        // const [res2] = await getJSON(`https://restcountries.com/v3.1/name/${c2}`)
+        // const [res3] = await getJSON(`https://restcountries.com/v3.1/name/${c3}`)
 
-        console.log(`2: ${city}`);
+        const country_promises = await Promise.all([getJSON(`https://restcountries.com/v3.1/name/${c1}`),
+        getJSON(`https://restcountries.com/v3.1/name/${c2}`),
+        getJSON(`https://restcountries.com/v3.1/name/${c3}`)]);
+
+        // ; (await country_promises).forEach(res => {
+        //     const [country] = res
+        //     console.log(country)
+        // })
+
+        // country_promises.forEach(res => { 
+        //     const [country] = res
+        //     console.log(country)
+        // })
+
+        const capitals = country_promises.flatMap(res => res[0].capital )
+        console.log(capitals)
+
+
+
     } catch (err) {
-        console.log(`2: ${err.message}`);
+        console.log(err)
     };
+};
 
-    console.log(`3: Finished`)
-})();
+
+get3Countries('mexico', 'portugal', 'belize')
+
+
+// (async function(){
+
+// })();
