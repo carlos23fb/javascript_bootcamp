@@ -304,6 +304,7 @@ const getPostion = function () {
 // TODO: Consuming Promises with Async/Await
 
 const whereAmI = async function () {
+
     try {
 
         const pos = await getPostion();
@@ -312,27 +313,40 @@ const whereAmI = async function () {
 
         const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
 
-        if(!resGeo.ok) throw new Error('Couldnt get geo code')
+        if (!resGeo.ok) throw new Error('Couldnt get geo code')
 
         const dataGeo = await resGeo.json()
 
         const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
 
-        if(!res.ok) throw new Error('Problem getting location data')
+        if (!res.ok) throw new Error('Problem getting country data')
 
         const [data] = await res.json()
 
         renderCountry(data)
-    }catch(err){
+
+        return `You are in ${dataGeo.city}, ${dataGeo.country}`
+    } catch (err) {
         console.log(`${err.message} 💥`)
         renderError(`Something went worng 💥`)
+
+
+        //* Reject promise returned from async function
+        throw err
+
+
     }
-}
+};
 
 
-whereAmI()
-whereAmI()
-whereAmI()
-whereAmI()
-whereAmI()
-whereAmI()
+(async function () {
+    try {
+        const city = await whereAmI();
+
+        console.log(`2: ${city}`);
+    } catch (err) {
+        console.log(`2: ${err.message}`);
+    };
+
+    console.log(`3: Finished`)
+})();
