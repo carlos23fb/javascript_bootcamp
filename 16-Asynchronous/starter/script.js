@@ -303,22 +303,36 @@ const getPostion = function () {
 
 // TODO: Consuming Promises with Async/Await
 
-const whereAmI = async function (country) {
+const whereAmI = async function () {
+    try {
 
-    const pos = await getPostion();
+        const pos = await getPostion();
 
-    const { latitude: lat, longitude: lng } = pos.coords
+        const { latitude: lat, longitude: lng } = pos.coords
 
-    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+        const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
 
-    const dataGeo = await resGeo.json()
+        if(!resGeo.ok) throw new Error('Couldnt get geo code')
 
-    const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
+        const dataGeo = await resGeo.json()
 
-    const [data] = await res.json()
+        const res = await fetch(`https://restcountries.com/v3.1/name/${dataGeo.country}`)
 
-    renderCountry(data)
+        if(!res.ok) throw new Error('Problem getting location data')
+
+        const [data] = await res.json()
+
+        renderCountry(data)
+    }catch(err){
+        console.log(`${err.message} 💥`)
+        renderError(`Something went worng 💥`)
+    }
 }
 
 
-whereAmI('mexico')
+whereAmI()
+whereAmI()
+whereAmI()
+whereAmI()
+whereAmI()
+whereAmI()
