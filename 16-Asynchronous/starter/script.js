@@ -125,7 +125,7 @@ const getJSON = function (url, errorMessage = 'Something went wrong') {
     return fetch(url)
         .then(response => {
 
-            console.log(response)
+
 
             if (!response.ok)
                 throw new Error(errorMessage)
@@ -372,7 +372,7 @@ const get3Countries = async function (c1, c2, c3) {
         //     console.log(country)
         // })
 
-        const capitals = country_promises.flatMap(res => res[0].capital )
+        const capitals = country_promises.flatMap(res => res[0].capital)
         console.log(capitals)
 
 
@@ -383,9 +383,60 @@ const get3Countries = async function (c1, c2, c3) {
 };
 
 
-get3Countries('mexico', 'portugal', 'belize')
+// get3Countries('mexico', 'portugal', 'belize')
 
 
-// (async function(){
+// TODO: Other Promise Combinators: race, allSettled and any
 
+// ? Promise.race return a promise no matter if the promise got rejected or fullfilled
+
+
+// (async function () {
+//     const res = await Promise.race([getJSON(`https://restcountries.com/v3.1/name/italy`),
+//     getJSON(`https://restcountries.com/v3.1/name/egypt`),
+//     getJSON(`https://restcountries.com/v3.1/name/mexico`),]);
+
+//     console.log(res[0])
 // })();
+
+
+// TODO: Other Promise Combinators: race, allSettled and any
+
+
+const timeot = function (s) {
+    return new Promise(function (_, reject) {
+        setTimeout(function () {
+            reject(new Error('Request took to loong'))
+        }, s * 1000)
+    })
+};
+
+
+Promise.race([getJSON(`https://restcountries.com/v3.1/name/italy`), timeot(2)])
+    .then(res => console.log(res))
+    .catch(err => {
+        console.log(err.message)
+    })
+
+
+// TODO Promise.allSettled
+
+// const getAsyncRes = async function () {
+//     const valuesRes = await Promise.allSettled([
+//         Promise.resolve('Resolve'),
+//         Promise.reject('Reject'),
+//         Promise.resolve('Another succes')]);
+//     const values = valuesRes.map(element => element.status)
+//     return values
+// }
+
+
+// TODO Promise.any
+
+Promise.any([
+    Promise.resolve('Resolve'),
+    Promise.reject('Rejected'),
+    Promise.resolve('Another succes')
+])
+    .then(res => console.log(res))
+    .catch(err=> console.log(err.message))
