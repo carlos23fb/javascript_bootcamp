@@ -6,20 +6,20 @@ import * as ShoopingCart from './shoopingCart.js'
 
 // console.log('Importing module')
 
-addToCart('Llave nuda 5"', 13)
+// addToCart('Llave nuda 5"', 13)
 
 
 // console.log(price, totalQuantity)
 
 
-ShoopingCart.addToCart('Lonche de carne asada', 2)
+// ShoopingCart.addToCart('Lonche de carne asada', 2)
 
 
 // TODO Export default
 
 import add from './shoopingCart.js'
 
-add('Queso', 6)
+// add('Queso', 6)
 
 // console.log(cart)
 
@@ -40,10 +40,10 @@ const getLastPost = async function () {
     const data = await res.json();
 
     return { title: data.at(-1).title, text: data.at(-1).body }
-}
+};
 
-const lastPost = getLastPost();
-console.log(lastPost)
+// const lastPost = getLastPost();
+// console.log(lastPost)
 
 
 // Not very clean
@@ -52,5 +52,30 @@ console.log(lastPost)
 //     console.log(res)
 // })
 
-const lastPost2 = await getLastPost()
-console.log(lastPost2)
+
+// TODO Implementing Top level await
+
+// const lastPost2 = await getLastPost()
+
+// console.log(lastPost2)
+
+
+// TODO The Module Pattern
+
+const shoopingCart2 = (function () {
+    const cart = []
+    const shippingCost = 237
+    const totalQuantity = 23
+    const addToCart = function (product, quantity) {
+        cart.push({ product: product, quantity: quantity })
+        console.log(`${quantity} ${product} added to cart`)
+    }
+
+    return{ shippingCost, addToCart, cart }
+})();
+
+shoopingCart2.addToCart('Teclado gaymer', 23)
+
+console.log(shoopingCart2.cart)
+
+shoopingCart2.addToCart('Teclado gaymer', 23)
