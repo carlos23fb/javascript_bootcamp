@@ -1,8 +1,9 @@
 // Importing module
 
-import { addToCart, totalPrice as price, totalQuantity, cart } from './shoopingCart.js'
+// import { addToCart, totalPrice as price, totalQuantity, cart } from './shoopingCart.js'
 
-import * as ShoopingCart from './shoopingCart.js'
+// import * as ShoopingCart from './shoopingCart.js'
+
 
 // console.log('Importing module')
 
@@ -17,7 +18,7 @@ import * as ShoopingCart from './shoopingCart.js'
 
 // TODO Export default
 
-import add from './shoopingCart.js'
+// import add from './shoopingCart.js'
 
 // add('Queso', 6)
 
@@ -71,11 +72,34 @@ const shoopingCart2 = (function () {
         console.log(`${quantity} ${product} added to cart`)
     }
 
-    return{ shippingCost, addToCart, cart }
+    return { shippingCost, addToCart, cart }
 })();
 
-shoopingCart2.addToCart('Teclado gaymer', 23)
+// shoopingCart2.addToCart('Teclado gaymer', 23)
 
-console.log(shoopingCart2.cart)
+// console.log(shoopingCart2.cart)
 
-shoopingCart2.addToCart('Teclado gaymer', 23)
+// shoopingCart2.addToCart('Teclado gaymer', 23)
+
+// TODO: CommonJs Modules
+
+import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+
+const carlos = {
+    name: 'Carlos',
+    edad: 28,
+    logginInfo: {
+        current: true,
+        isAdmin: false
+    }
+}
+
+const newCarlos = cloneDeep(carlos)
+
+newCarlos.name = 'Juan Carlos'
+
+newCarlos.logginInfo.isAdmin = true
+
+console.log(carlos)
+
+console.log(newCarlos)
