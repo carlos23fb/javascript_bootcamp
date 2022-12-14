@@ -2,7 +2,7 @@
 
 // import { addToCart, totalPrice as price, totalQuantity, cart } from './shoopingCart.js'
 
-// import * as ShoopingCart from './shoopingCart.js'
+// import add, {cart}  from './shoopingCart.js'
 
 
 // console.log('Importing module')
@@ -83,7 +83,9 @@ const shoopingCart2 = (function () {
 
 // TODO: CommonJs Modules
 
-import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+// import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+
+import { cloneDeep } from 'lodash-es';
 
 const carlos = {
     name: 'Carlos',
@@ -103,3 +105,7 @@ newCarlos.logginInfo.isAdmin = true
 console.log(carlos)
 
 console.log(newCarlos)
+
+if(module.hot){
+    module.hot.accept()
+}
