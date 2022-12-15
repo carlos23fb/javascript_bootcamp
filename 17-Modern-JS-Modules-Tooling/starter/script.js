@@ -130,8 +130,7 @@ Promise.resolve().then(()=> console.log('RESOLVE'))
 
 import 'core-js';
 
-
-
 // Polifilling async functions
 
 import 'regenerator-runtime/runtime'
+
