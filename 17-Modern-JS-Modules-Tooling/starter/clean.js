@@ -21,7 +21,6 @@ let spendingLimits = {
 
 const getLimit = (user) => spendingLimits?.[user] ?? 0
 
-
 const addExpense = function (value, description, user = 'jonas') {
 
   user = user.toLowerCase();
@@ -34,8 +33,6 @@ addExpense(10, 'Pizza 🍕');
 addExpense(100, 'Going to movies 🍿', 'Matilda');
 addExpense(200, 'Stuff', 'Jay');
 console.log(budget);
-
-
 
 const checkExpenses = function () {
   budget.forEach(entry => { if (entry.value < -getLimit(entry.user)) { entry.flag = 'limit' } })
