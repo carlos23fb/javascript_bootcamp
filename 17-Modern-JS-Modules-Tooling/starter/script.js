@@ -75,11 +75,11 @@ const shoopingCart2 = (function () {
     return { shippingCost, addToCart, cart }
 })();
 
-// shoopingCart2.addToCart('Teclado gaymer', 23)
+shoopingCart2.addToCart('Teclado gaymer', 1)
 
 // console.log(shoopingCart2.cart)
 
-// shoopingCart2.addToCart('Teclado gaymer', 23)
+shoopingCart2.addToCart('Teclado gaymer', 23)
 
 // TODO: CommonJs Modules
 
@@ -87,25 +87,51 @@ const shoopingCart2 = (function () {
 
 import { cloneDeep } from 'lodash-es';
 
-const carlos = {
-    name: 'Carlos',
-    edad: 28,
-    logginInfo: {
-        current: true,
-        isAdmin: false
+// const carlos = {
+//     name: 'Carlos',
+//     edad: 28,
+//     logginInfo: {
+//         current: true,
+//         isAdmin: false
+//     }
+// }
+
+// const newCarlos = cloneDeep(carlos)
+
+// newCarlos.name = 'Juan Carlos'
+
+// newCarlos.logginInfo.isAdmin = true
+
+// console.log(carlos)
+
+// console.log(newCarlos)
+
+if (module.hot) {
+    module.hot.accept()
+}
+
+
+class Person {
+    #greeting = 'Hey';
+    constructor(name) {
+        this.name = name;
+        console.log(`${this.#greeting}, ${this.name}`);
     }
 }
 
-const newCarlos = cloneDeep(carlos)
+const carlos = new Person('Juan Carlos Flores Becerra')
 
-newCarlos.name = 'Juan Carlos'
 
-newCarlos.logginInfo.isAdmin = true
+console.log(shoopingCart2.cart.find(el => el.quantity >= 2))
 
-console.log(carlos)
+Promise.resolve().then(()=> console.log('RESOLVE'))
 
-console.log(newCarlos)
 
-if(module.hot){
-    module.hot.accept()
-}
+
+import 'core-js';
+
+
+
+// Polifilling async functions
+
+import 'regenerator-runtime/runtime'
