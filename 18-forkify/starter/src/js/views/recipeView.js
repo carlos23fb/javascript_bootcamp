@@ -110,6 +110,7 @@ class RecipeView {
         </a>
         </div>`
     }
+
     #generateMarkupIngredient(ingredient) {
         return `
             <li class="recipe__ingredient">
@@ -123,6 +124,7 @@ class RecipeView {
                 </div>
             </li>`
     }
+    
 }
 
 export default new RecipeView();
