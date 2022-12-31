@@ -1,6 +1,7 @@
 import * as model from './model.js';
 
 import recipeView from './views/recipeView.js';
+import searchView from './views/searchView.js';
 
 import 'core-js/stable';
 
@@ -34,10 +35,27 @@ const controlRecipes = async function () {
   }
 }
 
+const controlSearchResults = async function () {
+  try {
+
+    const query = searchView.getQuery();
+
+    if(!query) return;
+
+
+    await model.loadSearchResults('pizza')
+    console.log(model.state.search.results)
+  } catch (err) {
+
+  }
+}
+
+
 controlRecipes()
 
-const init = function(){
+const init = function () {
   recipeView.addHandlerRender(controlRecipes)
+  searchView.addHandlerSearch(controlSearchResults)
 }
 
 init()

@@ -1,6 +1,5 @@
 import icons from 'url:../../img/icons.svg'
 import { Fraction } from 'fractional';
-console.log(Fraction)
 
 class RecipeView {
     #parentElemnt = document.querySelector('.recipe');
@@ -74,7 +73,7 @@ class RecipeView {
 
 
     _generateMarkup() {
-        console.log(this.#data)
+        
         return `
         <figure class="recipe__fig">
         <img src="${this.#data.image}" alt="${this.#data.title}" class="recipe__img" />x
