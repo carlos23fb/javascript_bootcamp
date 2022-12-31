@@ -30,5 +30,6 @@ export const loadRecipe = async function (id) {
 
         // ! Temp error handling
         console.error(`${err} 💥 💥 💥`)
+        throw err;
     }
 }

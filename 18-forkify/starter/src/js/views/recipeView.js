@@ -5,6 +5,8 @@ console.log(Fraction)
 class RecipeView {
     #parentElemnt = document.querySelector('.recipe');
     #data;
+    #errorMessage = `We could not find that recipe. Please try another one!`;
+    #message = ``
 
     render(data) {
         this.#data = data;
@@ -25,14 +27,51 @@ class RecipeView {
             <use href="${icons}#icon-loader"></use>
         </svg>
         </div>`;
-        this.#parentElemnt.innerHTML = '';
+        this.#clear()
         this.#parentElemnt.insertAdjacentHTML('afterbegin', markup)
+    }
+
+
+    renderError(message = this.#errorMessage) {
+
+        const markup =
+            `<div class="error">
+                <div>
+                    <svg>
+                        <use href="${icons}#icon-alert-triangle"></use>
+                    </svg>
+                </div>
+                <p>${message}</p>
+            </div>`
+
+        this.#clear()
+        this.#parentElemnt.insertAdjacentHTML('afterbegin', markup)
+
+    }
+
+    renderMessage(message = this.#message) {
+
+        const markup =
+            `<div class="message">
+                <div>
+                    <svg>
+                        <use href="${icons}#icon-smile"></use>
+                    </svg>
+                </div>
+                <p>${message}</p>
+            </div>`
+
+        this.#clear()
+        this.#parentElemnt.insertAdjacentHTML('afterbegin', markup)
+
     }
 
     // ? Publisher
     addHandlerRender(handler) {
         ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler))
     }
+
+
 
     _generateMarkup() {
         console.log(this.#data)
