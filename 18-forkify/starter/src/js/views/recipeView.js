@@ -29,6 +29,11 @@ class RecipeView {
         this.#parentElemnt.insertAdjacentHTML('afterbegin', markup)
     }
 
+    // ? Publisher
+    addHandlerRender(handler) {
+        ['hashchange', 'load'].forEach(event => window.addEventListener(event, handler))
+    }
+
     _generateMarkup() {
         console.log(this.#data)
         return `
@@ -124,7 +129,7 @@ class RecipeView {
                 </div>
             </li>`
     }
-    
+
 }
 
 export default new RecipeView();
